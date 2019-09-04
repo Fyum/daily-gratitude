@@ -18,8 +18,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      {/* TODO fix this flex top bar*/}
       <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View style={styles.topBar}></View>
+        <View style={styles.topBar}></View> 
       </View>
       {/* <View style={{ flex: 3 }}>
         <FlatList
