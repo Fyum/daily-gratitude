@@ -6,23 +6,28 @@ import {
   TouchableOpacity,
   Modal,
   TouchableHighlight,
+  ScrollView,
+  FlatList,
 } from 'react-native';
+
+import AddButton from './components/AddButton';
 
 export default function App() {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  const plusButtonPressed = () => {
-
-  }
-
   return (
     <View style={styles.container}>
       <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View style={{ width: 50, height: 50, backgroundColor: 'powderblue' }} />
-        <View style={{ width: 50, height: 50, backgroundColor: 'skyblue' }} />
-        <View style={{ width: 50, height: 50, backgroundColor: 'steelblue' }} />
+        <View style={styles.topBar}></View>
       </View>
+      {/* <View style={{ flex: 3 }}>
+        <FlatList
+          data={[{ key: 'a' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }]}
+          renderItem={({ item }) => <Text style={styles.listItem}>{item.key}</Text>}
+        />
+
+      </View> */}
       <Modal
         animationType="slide"
         transparent={false}
@@ -43,13 +48,7 @@ export default function App() {
           </View>
         </View>
       </Modal>
-
-      <TouchableOpacity
-        style={styles.plusButton}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.plusText}>+</Text>
-      </TouchableOpacity>
+      <AddButton onPress={() => setModalVisible(!modalVisible)} />
     </View>
   );
 }
@@ -57,25 +56,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 24,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  plusButton: {
-    position: 'absolute',
-    bottom: 40,
-    right: 40,
-    backgroundColor: 'red',
-    width: 80,
-    height: 80,
-    borderRadius: 100,
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center'
+  topBar: {
+    width: '100%',
+    height: 50,
+    backgroundColor: 'powderblue',
+    borderBottomWidth: 1,
+    borderBottomColor: 'black',
   },
-  plusText: {
-    fontSize: 40,
-    color: 'white',
-    textAlign: 'center',
+  listItem: {
+    flex: 1,
+    borderBottomWidth: 1,
+    height: 50,
+    width: '100%',
+    borderBottomColor: 'gray',
   }
 });
