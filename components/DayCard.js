@@ -45,8 +45,7 @@ const containerStyle = {
 const titleStyle = {
   color: '#9EB6C1',
   borderBottomColor: '#9EB6C1',
-  paddingTop: 20,
-  paddingBottom: 10,
+  paddingBottom: 20,
   marginRight: 10,
   borderBottomWidth: 1,
   textAlign: 'right',
