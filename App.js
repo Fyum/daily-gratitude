@@ -9,26 +9,35 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
+import {
+  ListItem,
+  Header,
+} from 'react-native-elements';
 
 import AddButton from './components/AddButton';
+import DayCardList from './components/DayCardList';
+
+const makeData = () => new Array(10).fill(0).map((x, i) => ({
+  name: `NAME-${i}`,
+}))
 
 export default function App() {
 
   const [modalVisible, setModalVisible] = useState(false);
+  const [data, setData] = useState(makeData());
 
   return (
     <View style={styles.container}>
-      {/* TODO fix this flex top bar*/}
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View style={styles.topBar}></View> 
-      </View>
-      {/* <View style={{ flex: 3 }}>
-        <FlatList
-          data={[{ key: 'a' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }, { key: 'b' }, { key: 'a' }, { key: 'b' }]}
-          renderItem={({ item }) => <Text style={styles.listItem}>{item.key}</Text>}
-        />
-
-      </View> */}
+      <Header
+        placement="left"
+        leftComponent={{ icon: 'menu', color: '#fff' }}
+        centerComponent={{ text: 'Daily gratitude', style: { color: '#fff' } }}
+        rightComponent={{ icon: 'home', color: '#fff' }}
+      />
+      <DayCardList
+        data={[1, 2, 3, 4, 5]}
+        dummyItems={data}
+      />
       <Modal
         animationType="slide"
         transparent={false}
@@ -57,17 +66,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 24,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  topBar: {
-    width: '100%',
-    height: 50,
-    backgroundColor: 'powderblue',
-    borderBottomWidth: 1,
-    borderBottomColor: 'black',
+    // marginTop: 24,
+    // backgroundColor: '#fff',
   },
   listItem: {
     flex: 1,
