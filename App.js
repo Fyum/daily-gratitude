@@ -29,10 +29,12 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header
+        containerStyle={{ borderBottomColor: '#313639', height: 50 }}
         placement="left"
-        leftComponent={{ icon: 'menu', color: '#fff' }}
-        centerComponent={{ text: 'Daily gratitude', style: { color: '#fff' } }}
-        rightComponent={{ icon: 'home', color: '#fff' }}
+        backgroundColor='#313639'
+        leftComponent={{ icon: 'menu', color: '#9EB6C1' }}
+        centerComponent={{ text: 'Daily gratitude', style: { color: '#9EB6C1' } }}
+        rightComponent={{ icon: 'home', color: '#9EB6C1' }}
       />
       <DayCardList
         data={[1, 2, 3, 4, 5]}
@@ -47,7 +49,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // marginTop: 24,
-    // backgroundColor: '#fff',
+    backgroundColor: '#4F5559',
   },
   listItem: {
     flex: 1,

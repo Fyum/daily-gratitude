@@ -5,7 +5,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import { blue, white } from 'ansi-colors';
 
 const DayCard = ({
   date,
@@ -23,7 +22,7 @@ const DayCard = ({
         {
           items.map((u, i) => {
             return (
-              <Text style={styles.textStyle}>{u.name}</Text>
+              <Text style={textStyle}>{u.name}</Text>
             );
           })
         }
@@ -36,12 +35,16 @@ const DayCard = ({
 const containerStyle = {
   paddingLeft: 20,
   paddingRight: 20,
-  marginLeft: 10,
-  marginRight: 10,
+  marginLeft: 0,
+  marginRight: 0,
+  border: 'none',
+  boxShadow: 'none',
+  backgroundColor: '#4F5559',
 };
 
 const titleStyle = {
-  color: 'gray',
+  color: '#9EB6C1',
+  borderBottomColor: '#9EB6C1',
   paddingTop: 20,
   paddingBottom: 10,
   marginRight: 10,
@@ -53,14 +56,12 @@ const dividerStyle = {
   display: 'none',
 };
 
-const styles = StyleSheet.create({
-  textStyle: {
-    padding: 20,
-    borderRadius: 10,
-    backgroundColor: '#84BD6B',
-    margin: 10,
-    color: 'white'
-  }
-});
+const textStyle = {
+  padding: 20,
+  borderRadius: 100,
+  backgroundColor: '#84BD6B',
+  margin: 10,
+  color: 'white'
+};
 
 export default DayCard;

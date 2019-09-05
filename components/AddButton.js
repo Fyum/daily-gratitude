@@ -4,39 +4,44 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import {
+  Icon
+} from 'react-native-elements';
 
 const AddButton = ({
   onPress,
 }) => {
-  return (
-    <TouchableOpacity
-      style={styles.button}
-      onPress={onPress}
-    >
-      <Text style={styles.text}>+</Text>
-    </TouchableOpacity>
+  return ( 
+      <Icon
+        name='add'
+        type='material'
+        size={40}
+        iconStyle={iconStyle}
+        onPress={onPress}
+      />
   )
 };
 
-
-const styles = StyleSheet.create({
-  button: {
-    position: 'absolute',
-    bottom: 40,
-    right: 40,
-    backgroundColor: 'red',
-    width: 80,
-    height: 80,
-    borderRadius: 100,
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'center'
+const iconStyle = {
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 8,
   },
-  text: {
-    fontSize: 45,
-    color: 'white',
-    textAlign: 'center',
-  }
-});
+  shadowOpacity: 0.44,
+  shadowRadius: 10.32,
+  elevation: 16,
+  // ^ Shadow box generated online
+  backgroundColor: '#F56D8E',
+  color: 'white',
+  padding: 20,
+  borderRadius: 100,
+  position: 'absolute',
+  bottom: 40,
+  right: 40,
+};
+
+const button = {
+};
 
 export default AddButton;
