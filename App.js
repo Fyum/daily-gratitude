@@ -29,7 +29,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Header
-        containerStyle={{ borderBottomColor: '#313639', height: 50 }}
+        containerStyle={{ borderBottomColor: '#313639', height: 80 }}
         placement="left"
         backgroundColor='#313639'
         leftComponent={{ icon: 'menu', color: '#9EB6C1' }}

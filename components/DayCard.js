@@ -37,7 +37,7 @@ const containerStyle = {
   paddingRight: 20,
   marginLeft: 0,
   marginRight: 0,
-  border: 'none',
+  borderWidth: 0,
   boxShadow: 'none',
   backgroundColor: '#4F5559',
 };
