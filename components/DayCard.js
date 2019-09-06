@@ -38,7 +38,6 @@ const containerStyle = {
   marginLeft: 0,
   marginRight: 0,
   borderWidth: 0,
-  boxShadow: 'none',
   backgroundColor: '#4F5559',
 };
 

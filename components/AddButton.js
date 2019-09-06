@@ -11,16 +11,23 @@ import {
 const AddButton = ({
   onPress,
 }) => {
-  return ( 
-      <Icon
-        name='add'
-        type='material'
-        size={40}
-        iconStyle={iconStyle}
-        onPress={onPress}
-      />
+  return (
+    <Icon
+      name='add'
+      type='material'
+      size={40}
+      containerStyle={containerStyle}
+      iconStyle={iconStyle}
+      onPress={onPress}
+    />
   )
 };
+
+const containerStyle = {
+  position: 'absolute',
+  bottom: 40,
+  right: 40,
+}
 
 const iconStyle = {
   shadowColor: "#000",
@@ -36,9 +43,6 @@ const iconStyle = {
   color: 'white',
   padding: 20,
   borderRadius: 100,
-  position: 'absolute',
-  bottom: 40,
-  right: 40,
 };
 
 const button = {

@@ -3,19 +3,16 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableOpacity,
-  Modal,
-  TouchableHighlight,
-  ScrollView,
-  FlatList,
 } from 'react-native';
 import {
   ListItem,
   Header,
+  Icon,
 } from 'react-native-elements';
 
 import AddButton from './components/AddButton';
 import DayCardList from './components/DayCardList';
+import CreateEntryOverlay from './components/CreateEntryOverlay';
 
 const makeData = () => new Array(10).fill(0).map((x, i) => ({
   name: `NAME-${i}`,
@@ -26,21 +23,34 @@ export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState(makeData());
 
+  const logPress = () => console.log('Pressed');
+
   return (
     <View style={styles.container}>
       <Header
         containerStyle={{ borderBottomColor: '#313639', height: 80 }}
         placement="left"
         backgroundColor='#313639'
-        leftComponent={{ icon: 'menu', color: '#9EB6C1' }}
-        centerComponent={{ text: 'Daily gratitude', style: { color: '#9EB6C1' } }}
-        rightComponent={{ icon: 'home', color: '#9EB6C1' }}
-      />
+      >
+        <Icon
+          name='menu'
+          type='material'
+          size={30}
+          onPress={() => setModalVisible(true)}
+          color='#9EB6C1'
+        />
+        <Text style={{ color: '#9EB6C1' }}>Daily gratitude</Text>
+      </Header>
       <DayCardList
         data={[1, 2, 3, 4, 5]}
         dummyItems={data}
       />
-      <AddButton onPress={() => setModalVisible(!modalVisible)} />
+      <CreateEntryOverlay
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        onSave={() => setModalVisible(false)} // TODO save new entry to memory
+      />
+      <AddButton onPress={() => setModalVisible(true)} />
     </View>
   );
 }
