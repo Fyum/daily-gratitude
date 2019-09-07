@@ -20,9 +20,9 @@ const DayCard = ({
     >
       <View style={{ flexDirection: 'row', flexWrap: 'wrap'}}>
         {
-          items.map((u, i) => {
+          items.map((x, i) => {
             return (
-              <Text style={textStyle}>{u.name}</Text>
+              <Text key={`text-${i}`} style={textStyle}>{x.title}</Text>
             );
           })
         }

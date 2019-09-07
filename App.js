@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -14,14 +14,22 @@ import AddButton from './components/AddButton';
 import DayCardList from './components/DayCardList';
 import CreateEntryOverlay from './components/CreateEntryOverlay';
 
-const makeData = () => new Array(10).fill(0).map((x, i) => ({
-  name: `NAME-${i}`,
-}))
+import retrieveData from './data-storage/retrieve_data';
 
 export default function App() {
 
   const [modalVisible, setModalVisible] = useState(false);
-  const [data, setData] = useState(makeData());
+  const [data, setData] = useState([]);
+
+
+  useEffect(() => {
+    const fetchFromStorage = async() => {
+      const data = await retrieveData();
+      setData(Object.values(data));
+    };
+
+    fetchFromStorage();
+  }, [])
 
   const logPress = () => console.log('Pressed');
 
@@ -42,8 +50,7 @@ export default function App() {
         <Text style={{ color: '#9EB6C1' }}>Daily gratitude</Text>
       </Header>
       <DayCardList
-        data={[1, 2, 3, 4, 5]}
-        dummyItems={data}
+        data={data}
       />
       <CreateEntryOverlay
         isVisible={modalVisible}

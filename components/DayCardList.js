@@ -7,7 +7,6 @@ import DayCard from './DayCard';
 
 const DayCardList = ({
   data,
-  dummyItems,
 }) => {
 
   return (
@@ -16,8 +15,8 @@ const DayCardList = ({
       renderItem={
         ({ item }) =>
           <DayCard
-            date='1 Sept 2019'
-            items={dummyItems}>
+            date={item[0].date}
+            items={item}>
           </DayCard>
       } 
     />
