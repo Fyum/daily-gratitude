@@ -78,6 +78,4 @@ const containerInputStyle = {
   marginBottom: 30
 };
 
-
-
 export default CreateEntryOverlay;
