@@ -4,6 +4,11 @@ import getItem from './utils/get_item';
 const makeKey = (date) =>
   `$entry_item:${date}`;
 
+/**
+ * 
+ * @param {*} date 
+ * @returns {Object} e.g: { date, title, comment }
+ */
 const getEntry = async (date) => {
   const key = makeKey(date);
   return getItem(key);

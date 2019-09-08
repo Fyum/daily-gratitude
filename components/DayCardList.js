@@ -15,8 +15,9 @@ const DayCardList = ({
       renderItem={
         ({ item }) =>
           <DayCard
-            date={item[0].date}
-            items={item}>
+            key={item.key}
+            date={item.date}
+            items={item.entries}>
           </DayCard>
       } 
     />
