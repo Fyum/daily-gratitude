@@ -14,7 +14,7 @@ import AddButton from './components/AddButton';
 import DayCardList from './components/DayCardList';
 import CreateEntryOverlay from './components/CreateEntryOverlay';
 
-import retrieveData from './data-storage/retrieve_data';
+import getEntries from './data-storage/get_month_entries';
 
 export default function App() {
 
@@ -24,14 +24,12 @@ export default function App() {
 
   useEffect(() => {
     const fetchFromStorage = async() => {
-      const data = await retrieveData();
-      setData(Object.values(data));
+      const entries = await getEntries();
+      setData(entries);
     };
 
     fetchFromStorage();
   }, [])
-
-  const logPress = () => console.log('Pressed');
 
   return (
     <View style={styles.container}>

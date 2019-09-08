@@ -1,6 +1,7 @@
 import { AsyncStorage } from 'react-native';
+// TODO use SecureStore from expo for encryption
 
-const saveData = async (key, data) => {
+const setItem = async (key, data) => {
   try {
     await AsyncStorage.setItem(key, data);
   } catch (err) {
@@ -8,4 +9,4 @@ const saveData = async (key, data) => {
   }
 }
 
-export default saveData;
+export default setItem;
