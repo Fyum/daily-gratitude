@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   View
 } from 'react-native';
@@ -11,11 +11,28 @@ import {
   Input,
 } from 'react-native-elements';
 
+import setEntry from '../data-storage/set_entry';
+
 const CreateEntryOverlay = ({
   isVisible,
   onClose,
   onSave,
 }) => {
+
+  const [date, setDate] = useState('');
+  const [title, setTitle] = useState('');
+  const [comment, setComment] = useState('');
+
+  const onSavePress = useCallback(async () => {
+    const newEntry = {
+      date,
+      title,
+      comment,
+    };
+    await setEntry(newEntry);
+    onSave();
+  }, [date, title, comment, setEntry])
+
 
   return (
 
@@ -40,7 +57,7 @@ const CreateEntryOverlay = ({
             name='check'
             type='material'
             size={30}
-            onPress={onSave}
+            onPress={onSavePress}
             color='#9EB6C1'
           />
         </Header>
@@ -50,18 +67,21 @@ const CreateEntryOverlay = ({
             inputStyle={{ color: 'white' }}
             label='Date'
             placeholder='01/02/2019'
+            onChangeText={text => setDate(text)}
           />
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
             label='Title'
             placeholder='Sunny day'
+            onChangeText={text => setTitle(text)}
           />
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
             label='Comment'
             placeholder='What a beautiful sunny day'
+            onChangeText={text => setComment(text)}
           />
         </View>
       </View>
