@@ -2,7 +2,7 @@ import { AsyncStorage } from 'react-native';
 // TODO use SecureStore from expo for encryption
 
 const formatData = data =>
-  data.map(x => ({ key: x[0], value: x[1] }));
+  data.map(x => ({ key: x[0], value: JSON.parse(x[1]) }));
 
 /**
  * 

@@ -9,7 +9,8 @@ const createDayEntry = entry => [{
   id: 0,
 }];
 
-const addEntry = (entries, entry) => [
+const addEntry = (entries, entry) => 
+[
   ...entries,
   {
     ...entry,
@@ -23,15 +24,16 @@ const addEntry = (entries, entry) => [
  * @param {Object} entry e.g: { date, title, comment }
  */
 const setEntry = async (entry) => {
-  const entries = await getItem(entry.date);
-  console.log('ENTRIES fetched', entries);
   const key = makeKey(entry.date);
+  const entries = await getItem(key);
+  console.log('ENTRIES fetched', entries);
   if(!entries){
     const newDayEntry = createDayEntry(entry);
     return setItem(key, newDayEntry);
   }
 
   const updatedDayEntry = addEntry(entries, entry);
+  console.log('UPDATE DAY ENTRY', updatedDayEntry);
   await setItem(key, updatedDayEntry);
 };
 

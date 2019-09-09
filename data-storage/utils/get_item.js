@@ -8,7 +8,7 @@ const getItem = async (key) => {
       console.log('No data with key', key);
       return;
     }
-    return data;
+    return JSON.parse(data);
   } catch (err) {
     console.log('Error when retrieving data with key', key);
   }
