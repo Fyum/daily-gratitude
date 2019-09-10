@@ -24,7 +24,7 @@ export default function App() {
 
   useEffect(() => {
     const fetchFromStorage = async() => {
-      const entries = await getEntries();
+      const entries = await getEntries('09', '2019');
       setData(entries);
     };
 

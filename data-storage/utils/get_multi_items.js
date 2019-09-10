@@ -2,7 +2,9 @@ import { AsyncStorage } from 'react-native';
 // TODO use SecureStore from expo for encryption
 
 const formatData = data =>
-  data.map(x => ({ key: x[0], value: JSON.parse(x[1]) }));
+  data
+    .filter(x => x[1] !== null)
+    .map(x => ({ key: x[0], value: JSON.parse(x[1])[0] }));
 
 /**
  * 
@@ -11,7 +13,8 @@ const formatData = data =>
  */
 const getMultiItems = async (keys) => {
   try {
-    const data = await AsyncStorage.mutliGet(keys);
+    const data = await AsyncStorage.multiGet(keys);
+    console.log('GET MULTI ITEM', data);
 
     if (!data || !data.length) {
       console.log('No data with key', key);
@@ -19,6 +22,7 @@ const getMultiItems = async (keys) => {
     }
     return formatData(data);
   } catch (err) {
+    console.err(err);
     console.log('Error when retrieving data with keys', keys);
   }
 }
