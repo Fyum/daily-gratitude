@@ -4,7 +4,9 @@ import getMultiItems from './utils/get_multi_items';
 // e.g: [$day_entries_item:01/09/2019, $day_entries_item:02/09/2019, ..., $entry_item:31/09/2019]
 const makeKeys = (month, year) => {
   const numberOfDays = DateTime.local(parseInt(year), parseInt(month)).daysInMonth;
-  return new Array(numberOfDays).fill(null).map((x, i) => `@day_entries_item:${(i + 1).toString().padStart(2, '0')}/${month.padStart(2, '0')}/${year}`);
+  return new Array(numberOfDays)
+    .fill(null)
+    .map((x, i) => `@day_entries_item:${(i + 1).toString().padStart(2, '0')}/${month.padStart(2, '0')}/${year}`);
 }
 
 const dummyData = [
@@ -47,21 +49,13 @@ const dummyData = [
 ];
 
 const formatData = (items) => {
-  return items.reduce((result, curr) => {
-    const obj = result.find(x => x.key === curr.key);
-    if (obj) {
-      obj.entries = [...obj.entries, curr.value]
-      return result;
+  return items.map(item => {
+    return {
+      key: item.key,
+      date: item.value[0].date,
+      entries: item.value,
     }
-
-    return [
-      ...result, {
-        key: curr.key,
-        date: curr.value.date,
-        entries: [curr.value]
-      },
-    ]
-  }, []);
+  });
 }
 
 /**

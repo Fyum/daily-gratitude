@@ -22,14 +22,15 @@ export default function App() {
   const [data, setData] = useState([]);
 
 
+  const fetchFromStorage = async() => {
+    const entries = await getEntries('09', '2019');
+    setData(entries);
+  };
+
   useEffect(() => {
-    const fetchFromStorage = async() => {
-      const entries = await getEntries('09', '2019');
-      setData(entries);
-    };
 
     fetchFromStorage();
-  }, [])
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -53,7 +54,7 @@ export default function App() {
       <CreateEntryOverlay
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}
-        onSave={() => setModalVisible(false)} // TODO save new entry to memory
+        onSave={() => { setModalVisible(false); fetchFromStorage();}} // TODO save new entry to memory
       />
       <AddButton onPress={() => setModalVisible(true)} />
     </View>

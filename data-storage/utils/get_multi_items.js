@@ -4,7 +4,7 @@ import { AsyncStorage } from 'react-native';
 const formatData = data =>
   data
     .filter(x => x[1] !== null)
-    .map(x => ({ key: x[0], value: JSON.parse(x[1])[0] }));
+    .map(x => ({ key: x[0], value: JSON.parse(x[1]) }));
 
 /**
  * 
