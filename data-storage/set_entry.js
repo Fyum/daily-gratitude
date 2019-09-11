@@ -6,7 +6,7 @@ const makeKey = date =>
 
 const createDayEntry = entry => [{
   ...entry,
-  id: 0,
+  id: 1,
 }];
 
 const addEntry = (entries, entry) => 
