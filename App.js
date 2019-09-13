@@ -20,10 +20,12 @@ export default function App() {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState([]);
+  const [monthYear, setMonthYear] = useState('09/2019');
 
 
   const fetchFromStorage = async() => {
-    const entries = await getEntries('09', '2019');
+    const [month, year] = monthYear.split('/');
+    const entries = await getEntries(month, year);
     setData(entries);
   };
 
