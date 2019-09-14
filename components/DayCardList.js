@@ -16,7 +16,7 @@ const DayCardList = ({
         ({ item }) =>
           <DayCard
             key={item.key}
-            date={item.date}
+            dateLabel={item.dateLabel}
             items={item.entries}
             >
           </DayCard>

@@ -9,11 +9,17 @@ const makeKeys = (month, year) => {
     .map((x, i) => `@day_entries_item:${(i + 1).toString().padStart(2, '0')}/${month.padStart(2, '0')}/${year}`);
 }
 
+const getDateLabel = date => {
+  const [day, month, year] = date.split('/');
+  return `${DateTime.local(Number(year), Number(month), Number(day)).weekdayShort}, ${date}`;
+}
+
 const formatData = (items) => {
   return items.map(item => {
     return {
       key: item.key,
       date: item.value[0].date,
+      dateLabel: getDateLabel(item.value[0].date),
       entries: item.value,
     }
   });

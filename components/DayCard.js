@@ -7,13 +7,13 @@ import {
 } from 'react-native';
 
 const DayCard = ({
-  date,
+  dateLabel,
   items,
 }) => {
 
   return (
     <Card
-      title={date}
+      title={dateLabel}
       containerStyle={containerStyle}
       titleStyle={titleStyle}
       dividerStyle={dividerStyle}
@@ -48,6 +48,9 @@ const titleStyle = {
   marginRight: 10,
   borderBottomWidth: 1,
   textAlign: 'right',
+  fontWeight: 'normal',
+  fontStyle: 'italic',
+  fontSize: 16
 };
 
 const dividerStyle = {
@@ -64,7 +67,7 @@ const textStyle = {
   margin: 10,
   color: 'white',
   height: '100%',
-  fontSize: 20,
+  fontSize: 18,
 };
 
 

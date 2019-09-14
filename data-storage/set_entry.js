@@ -17,8 +17,7 @@ const COLORS = [
 ]
 
 const getRandomColor = () =>
-  COLORS[Math.floor(Math.random() * COLORS.length)]
-
+  COLORS[Math.floor(Math.random() * COLORS.length)];
 
 const makeKey = date =>
   `@day_entries_item:${date}`;
