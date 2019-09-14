@@ -41,7 +41,7 @@ const iconStyle = {
   // ^ Shadow box generated online
   backgroundColor: '#F56D8E',
   color: 'white',
-  padding: 20,
+  padding: 15,
   borderRadius: 100,
 };
 
