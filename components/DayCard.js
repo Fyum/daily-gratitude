@@ -35,7 +35,7 @@ const DayCard = ({
 const containerStyle = {
   paddingLeft: 20,
   paddingRight: 20,
-  paddingTop: 5,
+  paddingTop: 10,
   paddingBottom: 5,
   marginLeft: 0,
   marginRight: 0,
