@@ -63,7 +63,8 @@ const textStyle = {
   backgroundColor: '#84BD6B',
   margin: 10,
   color: 'white',
-  height: '100%'
+  height: '100%',
+  fontSize: 20,
 };
 
 
