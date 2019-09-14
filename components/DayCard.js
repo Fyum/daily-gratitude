@@ -9,6 +9,7 @@ import {
 const DayCard = ({
   date,
   items,
+  color,
 }) => {
 
   return (
@@ -22,7 +23,7 @@ const DayCard = ({
         {
           items.map((x, i) => {
             return (
-              <Text key={`text-${i}`} style={textStyle}>{x.title}</Text>
+              <Text key={`text-${i}`} style={{...textStyle, backgroundColor: color }}>{x.title}</Text>
             );
           })
         }
