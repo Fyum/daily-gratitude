@@ -55,11 +55,16 @@ const dividerStyle = {
 };
 
 const textStyle = {
-  padding: 20,
-  borderRadius: 100,
+  paddingTop: 10,
+  paddingBottom: 10,
+  paddingLeft: 15,
+  paddingRight: 15,
+  borderRadius: 20,
   backgroundColor: '#84BD6B',
   margin: 10,
-  color: 'white'
+  color: 'white',
+  height: '100%'
 };
+
 
 export default DayCard;
