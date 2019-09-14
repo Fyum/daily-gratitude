@@ -35,16 +35,19 @@ const DayCard = ({
 const containerStyle = {
   paddingLeft: 20,
   paddingRight: 20,
+  paddingTop: 5,
+  paddingBottom: 5,
   marginLeft: 0,
   marginRight: 0,
   borderWidth: 0,
+  marginTop: 0,
   backgroundColor: '#4F5559',
 };
 
 const titleStyle = {
   color: '#9EB6C1',
   borderBottomColor: '#9EB6C1',
-  paddingBottom: 20,
+  paddingBottom: 5,
   marginRight: 10,
   borderBottomWidth: 1,
   textAlign: 'right',
@@ -66,7 +69,7 @@ const textStyle = {
   backgroundColor: '#84BD6B',
   margin: 10,
   color: 'white',
-  height: '100%',
+  height: 'auto',
   fontSize: 18,
 };
 
