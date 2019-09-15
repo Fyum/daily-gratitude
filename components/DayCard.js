@@ -24,7 +24,7 @@ const DayCard = ({
         {
           items.map((x, i) => {
             return (
-              <Entry key={`text-${i}`} title={x.title} color={x.color} />
+              <Entry key={`text-${i}`} title={x.title} color={x.color} comment={x.comment} />
             );
           })
         }

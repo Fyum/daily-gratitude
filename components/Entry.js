@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import {
   TouchableOpacity,
   Text,
+  View,
 } from 'react-native';
 
 const Entry = ({
   title,
+  comment,
   color,
 }) => {
 
   const [border, setBorder] = useState({});
+  const [showComment, setShowComment] = useState(false);
 
   const longPress = () => {
-    if(border.borderColor) {
+    setShowComment(!showComment);
+    if (border.borderColor) {
       setBorder({});
       return;
     }
@@ -20,15 +24,21 @@ const Entry = ({
     setBorder({
       borderWidth: 2,
       borderColor: '#9eb6c1',
-    })
+    });
   }
 
   return (
-    <TouchableOpacity
-      onLongPress={longPress}
-    >
-      <Text style={{ ...textStyle, ...border, backgroundColor: color }}>{title}</Text>
-    </TouchableOpacity>
+    <View>
+      <TouchableOpacity
+        onLongPress={longPress}
+      >
+        <Text style={{ ...textStyle, ...border, backgroundColor: color }}>{title}</Text>
+      </TouchableOpacity>
+      {
+        !!showComment && <Text style={{ ...textStyle, backgroundColor: color }}>{comment}</Text>
+          
+      }
+    </View>
   )
 }
 
