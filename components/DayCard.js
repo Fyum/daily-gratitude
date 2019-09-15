@@ -6,6 +6,8 @@ import {
   View,
 } from 'react-native';
 
+import Entry from './Entry';
+
 const DayCard = ({
   dateLabel,
   items,
@@ -22,7 +24,7 @@ const DayCard = ({
         {
           items.map((x, i) => {
             return (
-              <Text key={`text-${i}`} style={{...textStyle, backgroundColor: x.color }}>{x.title}</Text>
+              <Entry key={`text-${i}`} title={x.title} color={x.color} />
             );
           })
         }
