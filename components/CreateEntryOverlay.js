@@ -95,7 +95,9 @@ const overlayStyle = {
 };
 
 const containerInputStyle = {
-  marginBottom: 30
+  marginBottom: 30,
+  paddingLeft: 50,
+  paddingRight: 50,
 };
 
 export default CreateEntryOverlay;
