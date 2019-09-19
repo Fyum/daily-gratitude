@@ -73,14 +73,14 @@ const CreateEntryOverlay = ({
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
             label='Title'
-            placeholder='Sunny day'
+            placeholder='Write a short text'
             onChangeText={text => setTitle(text)}
           />
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
             label='Comment'
-            placeholder='What a beautiful sunny day'
+            placeholder='Write your comment here'
             onChangeText={text => setComment(text)}
           />
         </View>
