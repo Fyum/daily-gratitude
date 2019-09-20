@@ -12,35 +12,58 @@ const Entry = ({
 }) => {
 
   const [border, setBorder] = useState({});
+  const [containerWidth, setContainerWidth] = useState({});
   const [showComment, setShowComment] = useState(false);
 
-  const longPress = () => {
+  const press = () => {
     setShowComment(!showComment);
     if (border.borderColor) {
       setBorder({});
+      setContainerWidth({});
       return;
     }
 
     setBorder({
       borderWidth: 2,
-      borderColor: '#9eb6c1',
+      borderColor: '#313639',
     });
+
+    setContainerWidth({
+      width: '100%',
+    })
   }
 
   return (
-    <View>
+    <View style={{ ...containerStyle, ...containerWidth }}>
       <TouchableOpacity
-        onLongPress={longPress}
+        onPress={press}
       >
         <Text style={{ ...textStyle, ...border, backgroundColor: color }}>{title}</Text>
       </TouchableOpacity>
       {
-        !!showComment && <Text style={{ ...textStyle, backgroundColor: color }}>{comment}</Text>
-          
+        !!showComment && <Text style={{ ...commentTextStyle, backgroundColor: color }}>{comment}</Text>
+
       }
     </View>
   )
 }
+
+const boxShadow = {
+  shadowColor: "#000",
+  shadowOffset: {
+    width: 0,
+    height: 3,
+  },
+  shadowOpacity: 0.29,
+  shadowRadius: 4.65,
+
+  elevation: 7,
+}
+
+const containerStyle = {
+  width: 'auto',
+  maxWidth: 'fit-content',
+};
 
 const textStyle = {
   paddingTop: 10,
@@ -53,7 +76,33 @@ const textStyle = {
   color: 'white',
   height: 'auto',
   fontSize: 18,
+  alignSelf: 'flex-start',
+  ...boxShadow,
 };
+
+const commentTextStyle = {
+  paddingTop: 20,
+  paddingBottom: 20,
+  paddingLeft: 30,
+  paddingRight: 30,
+  borderTopLeftRadius: 0,
+  borderTopRightRadius: 40,
+  borderBottomLeftRadius: 40,
+  borderBottomRightRadius: 0,
+  backgroundColor: '#84BD6B',
+  borderWidth: 2,
+  borderColor: '#313639',
+  margin: 5,
+  marginLeft: 25,
+  marginBottom: 20,
+  marginTop: 0,
+  color: 'white',
+  height: 'auto',
+  fontSize: 18,
+  fontStyle: 'italic',
+  opacity: 0.7,
+  ...boxShadow,
+}
 
 export default Entry;
 
