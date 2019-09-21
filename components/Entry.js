@@ -24,7 +24,8 @@ const Entry = ({
     }
 
     setBorder({
-      borderWidth: 2,
+      borderRightWidth: 2,
+      borderLeftWidth: 2,
       borderColor: '#313639',
     });
 
@@ -62,7 +63,7 @@ const boxShadow = {
 
 const containerStyle = {
   width: 'auto',
-  maxWidth: 'fit-content',
+  alignSelf: 'flex-start',
 };
 
 const textStyle = {
@@ -89,8 +90,9 @@ const commentTextStyle = {
   borderTopRightRadius: 40,
   borderBottomLeftRadius: 40,
   borderBottomRightRadius: 0,
+  borderTopWidth: 2,
+  borderBottomWidth: 2,
   backgroundColor: '#84BD6B',
-  borderWidth: 2,
   borderColor: '#313639',
   margin: 5,
   marginLeft: 25,
