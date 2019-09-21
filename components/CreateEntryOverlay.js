@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { DateTime } from 'luxon';
 import {
   View
 } from 'react-native';
@@ -19,7 +20,7 @@ const CreateEntryOverlay = ({
   onSave,
 }) => {
 
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(DateTime.local().toFormat('dd/LL/yyyy'));
   const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
 
@@ -32,8 +33,6 @@ const CreateEntryOverlay = ({
     await setEntry(newEntry);
     onSave();
   }, [date, title, comment, setEntry])
-
-
   return (
 
     <Overlay
@@ -65,13 +64,16 @@ const CreateEntryOverlay = ({
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
+            labelStyle={{ color: '#9eb6c1' }}
             label='Date'
             placeholder='01/02/2019'
+            defaultValue={date}
             onChangeText={text => setDate(text)}
           />
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
+            labelStyle={{ color: '#9eb6c1' }}
             label='Title'
             placeholder='Write a short text'
             onChangeText={text => setTitle(text)}
@@ -79,6 +81,7 @@ const CreateEntryOverlay = ({
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
+            labelStyle={{ color: '#9eb6c1' }}
             label='Comment'
             placeholder='Write your comment here'
             onChangeText={text => setComment(text)}
