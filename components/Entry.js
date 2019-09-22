@@ -107,7 +107,7 @@ const commentTextStyle = {
   fontSize: 18,
   fontStyle: 'italic',
   opacity: 0.7,
-  alignSelf: 'flex-start',
+  // alignSelf: 'flex-start', // TODO find a way to not make it stretch nor overflow 
   ...boxShadow,
 }
 

@@ -23,7 +23,7 @@ export default function App() {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState([]);
-  const [currentList, setCurrentList] = useState({ month: 9, year: 2019 });
+  const [currentList, setCurrentList] = useState({ month: 9, year: 2019 }); // TODO use current month
 
   const fetchFromStorage = async () => {
     const entries = await getEntries(currentList.month.toString().padStart(2, 0), currentList.year);

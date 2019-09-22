@@ -44,7 +44,7 @@ const MonthSelector = ({
       <Icon
         onPress={() => onClickNextMonth()}
         style={iconStyle}
-        name='arrow-back'
+        name='arrow-back' // TODO use the proper icon
         type='material'
         color={textColor}
         size={40}
@@ -58,9 +58,9 @@ const textColor = '#9eb6c1';
 const containerStyle = {
   flexDirection: 'row',
   justifyContent: 'center',
-  paddingTop: 80,
-  paddingBottom: 80,
-  backgroundColor: '#35454e',
+  paddingTop: 30,
+  paddingBottom: 30,
+  backgroundColor: '#394148',
 };
 
 const textStyle = {
