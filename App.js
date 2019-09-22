@@ -10,6 +10,7 @@ import {
   Icon,
 } from 'react-native-elements';
 
+import MainHeader from './components/MainHeader';
 import AddButton from './components/AddButton';
 import DayCardList from './components/DayCardList';
 import CreateEntryOverlay from './components/CreateEntryOverlay';
@@ -23,7 +24,7 @@ export default function App() {
   const [monthYear, setMonthYear] = useState('09/2019');
 
 
-  const fetchFromStorage = async() => {
+  const fetchFromStorage = async () => {
     const [month, year] = monthYear.split('/');
     const entries = await getEntries(month, year);
     setData(entries);
@@ -36,27 +37,28 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Header
-        containerStyle={{ borderBottomColor: '#313639', height: 80 }}
-        placement="left"
-        backgroundColor='#313639'
-      >
+      <MainHeader
+        onClickMenu={() => {}} // TODO
+      />
+
+      <View>
         <Icon
-          name='menu'
+          name='arrow-back'
           type='material'
-          size={30}
-          onPress={() => setModalVisible(true)}
-          color='#9EB6C1'
         />
-        <Text style={{ color: '#9EB6C1' }}>Daily gratitude</Text>
-      </Header>
+        <Text>August 2019</Text>
+        <Icon
+          name='arrow-back'
+          type='material'
+        />
+      </View>
       <DayCardList
         data={data}
       />
       <CreateEntryOverlay
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}
-        onSave={() => { setModalVisible(false); fetchFromStorage();}} // TODO save new entry to memory
+        onSave={() => { setModalVisible(false); fetchFromStorage(); }} // TODO save new entry to memory
       />
       <AddButton onPress={() => setModalVisible(true)} />
     </View>

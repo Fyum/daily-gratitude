@@ -38,8 +38,9 @@ const Entry = ({
     <View style={{ ...containerStyle, ...containerWidth }}>
       <TouchableOpacity
         onPress={press}
+        style={{ ...touchableStyle, ...border, backgroundColor: color }}
       >
-        <Text style={{ ...textStyle, ...border, backgroundColor: color }}>{title}</Text>
+        <Text style={textStyle}>{title}</Text>
       </TouchableOpacity>
       {
         !!showComment && <Text style={{ ...commentTextStyle, backgroundColor: color }}>{comment}</Text>
@@ -63,10 +64,15 @@ const boxShadow = {
 
 const containerStyle = {
   width: 'auto',
-  alignSelf: 'flex-start',
+  // alignSelf: 'flex-start',
 };
 
 const textStyle = {
+  fontSize: 18,
+  color: 'white',
+}
+
+const touchableStyle = {
   paddingTop: 10,
   paddingBottom: 10,
   paddingLeft: 15,
@@ -74,9 +80,7 @@ const textStyle = {
   borderRadius: 20,
   backgroundColor: '#84BD6B',
   margin: 10,
-  color: 'white',
   height: 'auto',
-  fontSize: 18,
   alignSelf: 'flex-start',
   ...boxShadow,
 };
@@ -103,6 +107,7 @@ const commentTextStyle = {
   fontSize: 18,
   fontStyle: 'italic',
   opacity: 0.7,
+  alignSelf: 'flex-start',
   ...boxShadow,
 }
 
