@@ -19,7 +19,7 @@ const AddButton = ({
       containerStyle={containerStyle}
       iconStyle={iconStyle}
       onPress={onPress}
-      underlayColor='#FFFFFF0'
+      underlayColor='#FFFFFF00'
     />
   )
 };

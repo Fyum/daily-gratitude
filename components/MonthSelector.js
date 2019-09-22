@@ -35,18 +35,20 @@ const MonthSelector = ({
       <Icon
         onPress={() => onClickPreviousMonth()}
         style={iconStyle}
-        name='arrow-back'
+        name='keyboard-arrow-left'
         type='material'
         color={textColor}
+        underlayColor='transparent'
         size={40}
       />
       <Text style={textStyle}>{monthValueMap[currentMonth]} {currentYear}</Text>
       <Icon
         onPress={() => onClickNextMonth()}
         style={iconStyle}
-        name='arrow-back' // TODO use the proper icon
+        name='keyboard-arrow-right' // TODO use the proper icon
         type='material'
         color={textColor}
+        underlayColor='transparent'
         size={40}
       />
     </View>
