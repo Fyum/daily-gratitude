@@ -5,8 +5,12 @@ import {
 } from 'react-native';
 
 import {
-  Icon, 
+  Icon,
 } from 'react-native-elements';
+
+import {
+  LinearGradient
+} from 'expo-linear-gradient';
 
 const monthValueMap = {
   1: 'Jan',
@@ -30,28 +34,33 @@ const MonthSelector = ({
   onClickNextMonth,
 }) => {
   return (
+    <LinearGradient
+      colors={['#313639', '#4f5559']}
+      >
 
-    <View style={containerStyle}>
-      <Icon
-        onPress={() => onClickPreviousMonth()}
-        style={iconStyle}
-        name='keyboard-arrow-left'
-        type='material'
-        color={textColor}
-        underlayColor='transparent'
-        size={40}
-      />
-      <Text style={textStyle}>{monthValueMap[currentMonth]} {currentYear}</Text>
-      <Icon
-        onPress={() => onClickNextMonth()}
-        style={iconStyle}
-        name='keyboard-arrow-right' // TODO use the proper icon
-        type='material'
-        color={textColor}
-        underlayColor='transparent'
-        size={40}
-      />
-    </View>
+      <View style={containerStyle}>
+        <Icon
+          onPress={() => onClickPreviousMonth()}
+          style={iconStyle}
+          name='keyboard-arrow-left'
+          type='material'
+          color={textColor}
+          underlayColor='transparent'
+          size={40}
+        />
+        <Text style={textStyle}>{monthValueMap[currentMonth]} {currentYear}</Text>
+        <Icon
+          onPress={() => onClickNextMonth()}
+          style={iconStyle}
+          name='keyboard-arrow-right' // TODO use the proper icon
+          type='material'
+          color={textColor}
+          underlayColor='transparent'
+          size={40}
+        />
+      </View>
+
+    </LinearGradient>
   )
 }
 
@@ -62,7 +71,7 @@ const containerStyle = {
   justifyContent: 'center',
   paddingTop: 30,
   paddingBottom: 30,
-  backgroundColor: '#394148',
+  backgroundColor: 'transparent',
 };
 
 const textStyle = {
@@ -75,7 +84,7 @@ const textStyle = {
 }
 
 const iconStyle = {
-  
+
 }
 
 export default MonthSelector;
