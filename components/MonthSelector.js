@@ -8,22 +8,41 @@ import {
   Icon, 
 } from 'react-native-elements';
 
+const monthValueMap = {
+  1: 'Jan',
+  2: 'Feb',
+  3: 'Mar',
+  4: 'Apr',
+  5: 'May',
+  6: 'Jun',
+  7: 'Jul',
+  8: 'Aug',
+  9: 'Sep',
+  10: 'Oct',
+  11: 'Nov',
+  12: 'Dec',
+}
+
 const MonthSelector = ({
   currentMonth,
   currentYear,
+  onClickPreviousMonth,
+  onClickNextMonth,
 }) => {
   return (
 
     <View style={containerStyle}>
       <Icon
+        onPress={() => onClickPreviousMonth()}
         style={iconStyle}
         name='arrow-back'
         type='material'
         color={textColor}
         size={40}
       />
-      <Text style={textStyle}>{currentMonth} {currentYear}</Text>
+      <Text style={textStyle}>{monthValueMap[currentMonth]} {currentYear}</Text>
       <Icon
+        onPress={() => onClickNextMonth()}
         style={iconStyle}
         name='arrow-back'
         type='material'
@@ -38,9 +57,10 @@ const textColor = '#9eb6c1';
 
 const containerStyle = {
   flexDirection: 'row',
-  alignSelf: 'center',
+  justifyContent: 'center',
   paddingTop: 80,
   paddingBottom: 80,
+  backgroundColor: '#35454e',
 };
 
 const textStyle = {

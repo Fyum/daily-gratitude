@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   StyleSheet,
   Text,
@@ -22,32 +22,68 @@ export default function App() {
 
   const [modalVisible, setModalVisible] = useState(false);
   const [data, setData] = useState([]);
-  const [monthYear, setMonthYear] = useState('09/2019');
-
+  const [currentList, setCurrentList] = useState({ month: 9, year: 2019 });
 
   const fetchFromStorage = async () => {
-    const [month, year] = monthYear.split('/');
-    const entries = await getEntries(month, year);
+    const entries = await getEntries(currentList.month.toString().padStart(2, 0), currentList.year);
     setData(entries);
   };
 
-  useEffect(() => {
+  const previousMonth = useCallback(() => {
+    const newMonth = currentList.month - 1;
+    if (newMonth === 0) {
+      setCurrentList({
+        month: 12,
+        year: currentList.year - 1,
+      })
+    } else {
+      setCurrentList({
+        month: newMonth,
+        year: currentList.year,
+      });
+    };
 
+  }, [currentList, setCurrentList]);
+
+
+  const nextMonth = useCallback(() => {
+    const newMonth = currentList.month + 1;
+    if (newMonth === 13) {
+      setCurrentList({
+        month: 1,
+        year: currentList.year + 1,
+      })
+    } else {
+      setCurrentList({
+        month: newMonth,
+        year: currentList.year,
+      });
+    }
+  }, [currentList, setCurrentList]);
+
+  useEffect(() => {
     fetchFromStorage();
-  }, []);
+  }, [currentList]);
 
   return (
     <View style={styles.container}>
       <MainHeader
-        onClickMenu={() => {}} // TODO
+        onClickMenu={() => { }} // TODO
       />
       <MonthSelector
-        currentMonth={'September'}
-        currentYear={2019}
+        currentMonth={currentList.month}
+        currentYear={currentList.year}
+        onClickPreviousMonth={previousMonth}
+        onClickNextMonth={nextMonth}
       />
-      <DayCardList
-        data={data}
-      />
+      {
+        data && data.length
+          ? <DayCardList
+            data={data}
+          />
+          : <Text>You have no entry</Text>
+      }
+
       <CreateEntryOverlay
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}
