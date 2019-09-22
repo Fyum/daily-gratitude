@@ -15,6 +15,7 @@ import MonthSelector from './components/MonthSelector';
 import AddButton from './components/AddButton';
 import DayCardList from './components/DayCardList';
 import CreateEntryOverlay from './components/CreateEntryOverlay';
+import NoEntriesMessage from './components/NoEntriesMessage';
 
 import getEntries from './data-storage/get_month_entries';
 
@@ -44,7 +45,6 @@ export default function App() {
     };
 
   }, [currentList, setCurrentList]);
-
 
   const nextMonth = useCallback(() => {
     const newMonth = currentList.month + 1;
@@ -81,7 +81,7 @@ export default function App() {
           ? <DayCardList
             data={data}
           />
-          : <Text>You have no entry</Text>
+          : <NoEntriesMessage />
       }
 
       <CreateEntryOverlay
