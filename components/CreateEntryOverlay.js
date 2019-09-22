@@ -85,6 +85,8 @@ const CreateEntryOverlay = ({
             label='Comment'
             placeholder='Write your comment here'
             onChangeText={text => setComment(text)}
+            multiline={true}
+            numberOfLines={4}
           />
         </View>
       </View>
