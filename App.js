@@ -11,6 +11,7 @@ import {
 } from 'react-native-elements';
 
 import MainHeader from './components/MainHeader';
+import MonthSelector from './components/MonthSelector';
 import AddButton from './components/AddButton';
 import DayCardList from './components/DayCardList';
 import CreateEntryOverlay from './components/CreateEntryOverlay';
@@ -40,18 +41,10 @@ export default function App() {
       <MainHeader
         onClickMenu={() => {}} // TODO
       />
-
-      <View>
-        <Icon
-          name='arrow-back'
-          type='material'
-        />
-        <Text>August 2019</Text>
-        <Icon
-          name='arrow-back'
-          type='material'
-        />
-      </View>
+      <MonthSelector
+        currentMonth={'September'}
+        currentYear={2019}
+      />
       <DayCardList
         data={data}
       />
