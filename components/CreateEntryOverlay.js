@@ -37,7 +37,7 @@ const CreateEntryOverlay = ({
 
     <Overlay
       isVisible={isVisible}
-      fullScreen={false}
+      fullScreen
       overlayStyle={overlayStyle}>
       <View>
         <Header
