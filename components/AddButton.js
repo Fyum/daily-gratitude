@@ -41,7 +41,4 @@ const iconStyle = {
   borderRadius: 100,
 };
 
-const button = {
-};
-
 export default AddButton;
