@@ -4,11 +4,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import {
-  ListItem,
-  Header,
-  Icon,
-} from 'react-native-elements';
 
 import MainHeader from './components/MainHeader';
 import MonthSelector from './components/MonthSelector';

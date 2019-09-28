@@ -4,6 +4,9 @@ import {
   Text,
   View,
 } from 'react-native';
+import {
+  Icon,
+} from 'react-native-elements';
 
 const Entry = ({
   title,
@@ -36,15 +39,62 @@ const Entry = ({
 
   return (
     <View style={{ ...containerStyle, ...containerWidth }}>
-      <TouchableOpacity
-        onPress={press}
-        style={{ ...touchableStyle, ...border, backgroundColor: color }}
-      >
-        <Text style={textStyle}>{title}</Text>
-      </TouchableOpacity>
+
+      <View style={{ flexDirection: 'row', margin: 10 }}>
+
+        <TouchableOpacity
+          onPress={press}
+          style={{ ...touchableStyle, ...border, backgroundColor: color }}
+        >
+          <Text style={textStyle}>{title}</Text>
+        </TouchableOpacity>
+        {
+          !!showComment &&
+          <Icon
+            name='delete'
+            type='material'
+            size={20}
+            containerStyle={{
+              marginLeft: 10,
+              marginTop: 10,
+            }}
+            iconStyle={{
+              color: '#9eb6c1',
+              // borderColor: 'white',
+              // borderWidth: 2,
+              borderRadius: 20,
+              backgroundColor: '#5b6267',
+              padding: 4
+            }}
+            onPress={() => { }}
+            underlayColor='transparent'
+          />
+        }
+        {
+          !!showComment &&
+          <Icon
+            name='edit'
+            type='material'
+            size={20}
+            containerStyle={{
+              marginLeft: 10,
+              marginTop: 10,
+            }}
+            iconStyle={{
+              color: '#9eb6c1',
+              // borderColor: 'white',
+              // borderWidth: 2,
+              borderRadius: 20,
+              backgroundColor: '#5b6267',
+              padding: 4
+            }}
+            onPress={() => { }}
+            underlayColor='transparent'
+          />
+        }
+      </View>
       {
         !!showComment && <Text style={{ ...commentTextStyle, backgroundColor: color }}>{comment}</Text>
-
       }
     </View>
   )
@@ -79,7 +129,6 @@ const touchableStyle = {
   paddingRight: 15,
   borderRadius: 20,
   backgroundColor: '#84BD6B',
-  margin: 10,
   height: 'auto',
   alignSelf: 'flex-start',
   ...boxShadow,
