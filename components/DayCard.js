@@ -10,6 +10,7 @@ import Entry from './Entry';
 
 const DayCard = ({
   dateLabel,
+  dayKey,
   items,
 }) => {
 
@@ -24,7 +25,13 @@ const DayCard = ({
         {
           items.map((x, i) => {
             return (
-              <Entry key={`text-${i}`} title={x.title} color={x.color} comment={x.comment} />
+              <Entry key={`text-${i}`} 
+                dayKey={dayKey} 
+                entryIdx={x.id} 
+                title={x.title} 
+                color={x.color} 
+                comment={x.comment} 
+              />
             );
           })
         }

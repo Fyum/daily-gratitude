@@ -16,6 +16,7 @@ const DayCardList = ({
         ({ item }) =>
           <DayCard
             key={item.key}
+            dayKey={item.key}
             dateLabel={item.dateLabel}
             items={item.entries}
             >

@@ -8,10 +8,14 @@ import {
   Icon,
 } from 'react-native-elements';
 
+import deleteEntry from '../data-storage/delete_entry';
+
 const Entry = ({
+  dayKey,
   title,
   comment,
   color,
+  entryIdx,
 }) => {
 
   const [border, setBorder] = useState({});
@@ -32,6 +36,7 @@ const Entry = ({
       borderColor: '#313639',
     });
 
+    // When comment is shown, we want to have the full width 
     setContainerWidth({
       width: '100%',
     })
@@ -66,7 +71,7 @@ const Entry = ({
               backgroundColor: '#5b6267',
               padding: 4
             }}
-            onPress={() => { }}
+            onPress={() => deleteEntry(dayKey, entryIdx)}
             underlayColor='transparent'
           />
         }
