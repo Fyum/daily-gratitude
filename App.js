@@ -80,15 +80,15 @@ export default function App() {
           : <NoEntriesMessage />
       }
 
-      {/* <CreateEntryOverlay
+      <CreateEntryOverlay
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}
         onSave={() => { setModalVisible(false); fetchFromStorage(); }} // TODO save new entry to memory
-      /> */}
-      <DeleteEntryOverlay
+      />
+      {/* <DeleteEntryOverlay
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}  
-        />
+        /> */}
       <AddButton onPress={() => setModalVisible(true)} />
     </View>
   );
