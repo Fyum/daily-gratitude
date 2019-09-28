@@ -38,13 +38,11 @@ const getMonthEntries = async (month, year) => {
   }
   const keys = makeKeys(month, year);
 
-  console.log('KEYS', keys);
   const items = await getMultiItems(keys);
   if(!items.length){
     console.log('no item');
     return [];
   }
-  console.log('ITEMS', items);
   return formatData(items);
 }
 

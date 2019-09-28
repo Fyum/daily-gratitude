@@ -14,7 +14,6 @@ const formatData = data =>
 const getMultiItems = async (keys) => {
   try {
     const data = await AsyncStorage.multiGet(keys);
-    console.log('GET MULTI ITEM', data);
 
     if (!data || !data.length) {
       console.log('No data with key', key);
