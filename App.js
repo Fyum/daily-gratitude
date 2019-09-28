@@ -10,6 +10,7 @@ import MonthSelector from './components/MonthSelector';
 import AddButton from './components/AddButton';
 import DayCardList from './components/DayCardList';
 import CreateEntryOverlay from './components/CreateEntryOverlay';
+import DeleteEntryOverlay from './components/DeleteEntryOverlay'; // TODO remove this, just for testing
 import NoEntriesMessage from './components/NoEntriesMessage';
 
 import getEntries from './data-storage/get_month_entries';
@@ -79,11 +80,15 @@ export default function App() {
           : <NoEntriesMessage />
       }
 
-      <CreateEntryOverlay
+      {/* <CreateEntryOverlay
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}
         onSave={() => { setModalVisible(false); fetchFromStorage(); }} // TODO save new entry to memory
-      />
+      /> */}
+      <DeleteEntryOverlay
+        isVisible={modalVisible}
+        onClose={() => setModalVisible(false)}  
+        />
       <AddButton onPress={() => setModalVisible(true)} />
     </View>
   );
