@@ -5,7 +5,7 @@ const makeKey = (date) =>
   `$day_entries_item:${date}`;
 
 /**
- * 
+ * Retrieve a single formatted entry
  * @param {*} date
  * @param {string} id 
  * @returns {Object} e.g: { date, title, comment }
