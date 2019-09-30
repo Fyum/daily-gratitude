@@ -57,5 +57,6 @@ export
         return { ...state, data: action.data };
       case ACTIONS.ADD_DAY_ENTRY:
         return setFormattedAddDayEntry(state, action.data);
+      
     }
   }
