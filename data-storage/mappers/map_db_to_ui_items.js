@@ -11,7 +11,7 @@ const formatData = (items) => {
     return {
       key: item.key,
       date: item.value[0].date,
-      dateLabel: getDateLabel(item.value[0].date),
+      dateLabel: getDateLabel(item.value[0].date), // TODO maybe set this data on put
       entries: item.value,
     }
   });
