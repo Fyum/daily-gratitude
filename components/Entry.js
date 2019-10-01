@@ -14,6 +14,12 @@ import {
 } from '../reducers/main_reducer';
 import getDayEntries from '../data-storage/get_day_entries';
 
+import themeStyle from '../themes/styles';
+const {
+  textColor,
+  iconBackgroundColor,
+} = themeStyle;
+
 const Entry = ({
   dispatch,
   date,
@@ -77,11 +83,9 @@ const Entry = ({
               marginTop: 10,
             }}
             iconStyle={{
-              color: '#9eb6c1',
-              // borderColor: 'white',
-              // borderWidth: 2,
+              color: textColor,
               borderRadius: 20,
-              backgroundColor: '#5b6267',
+              backgroundColor: iconBackgroundColor,
               padding: 4
             }}
             onPress={onPressDeleteEntry}
@@ -99,11 +103,9 @@ const Entry = ({
               marginTop: 10,
             }}
             iconStyle={{
-              color: '#9eb6c1',
-              // borderColor: 'white',
-              // borderWidth: 2,
+              color: textColor,
               borderRadius: 20,
-              backgroundColor: '#5b6267',
+              backgroundColor: iconBackgroundColor,
               padding: 4
             }}
             onPress={() => { }}

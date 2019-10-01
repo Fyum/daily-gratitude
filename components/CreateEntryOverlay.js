@@ -19,6 +19,13 @@ import {
 import setEntry from '../data-storage/set_entry';
 import getDayEntries from '../data-storage/get_day_entries';
 
+import themeStyle from '../themes/styles';
+const {
+  headerBackgroundColor,
+  contentBackgroundColor,
+  textColor,
+} = themeStyle;
+
 const CreateEntryOverlay = ({
   dispatch,
   isVisible,
@@ -52,22 +59,22 @@ const CreateEntryOverlay = ({
         <Header
           containerStyle={{ borderBottomColor: '#313639', height: 80 }}
           placement="left"
-          backgroundColor='#313639'>
+          backgroundColor={headerBackgroundColor}>
           <Icon
             name='arrow-back'
             type='material'
             size={30}
             onPress={onClose}
-            color='#9EB6C1'
+            color={textColor}
             underlayColor='transparent'
           />
-          <Text style={{ color: '#9EB6C1' }}>Create new entry</Text>
+          <Text style={{ color: textColor }}>Create new entry</Text>
           <Icon
             name='check'
             type='material'
             size={30}
             onPress={onSavePress}
-            color='#9EB6C1'
+            color={textColor}
             underlayColor='transparent'
           />
         </Header>
@@ -75,7 +82,7 @@ const CreateEntryOverlay = ({
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
-            labelStyle={{ color: '#9eb6c1' }}
+            labelStyle={{ color: textColor }}
             label='Date'
             placeholder='01/02/2019'
             defaultValue={date}
@@ -84,7 +91,7 @@ const CreateEntryOverlay = ({
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
-            labelStyle={{ color: '#9eb6c1' }}
+            labelStyle={{ color: textColor }}
             label='Title'
             placeholder='Write a short text'
             onChangeText={text => setTitle(text)}
@@ -92,7 +99,7 @@ const CreateEntryOverlay = ({
           <Input
             containerStyle={containerInputStyle}
             inputStyle={{ color: 'white' }}
-            labelStyle={{ color: '#9eb6c1' }}
+            labelStyle={{ color: textColor }}
             label='Comment'
             placeholder='Write your comment here'
             onChangeText={text => setComment(text)}
@@ -106,7 +113,7 @@ const CreateEntryOverlay = ({
 }
 
 const overlayStyle = {
-  backgroundColor: '#4f5559',
+  backgroundColor: contentBackgroundColor,
   padding: 0,
 };
 

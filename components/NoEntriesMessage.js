@@ -4,6 +4,11 @@ import {
   Text,
 } from 'react-native';
 
+import themeStyle from '../themes/styles';
+const {
+  textColor,
+} = themeStyle;
+
 const NoEntriesMessage = ({
 
 }) => {
@@ -22,9 +27,9 @@ const containerStyle = {
 };
 
 const textStyle = {
-  color: '#9eb6c1',
+  color: textColor,
   borderWidth: 2,
-  borderColor: '#9eb6c1',
+  borderColor: textColor,
   borderRadius: 10,
   padding: 20,
   fontSize: 17,

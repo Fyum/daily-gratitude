@@ -5,7 +5,6 @@ import {
 } from 'react-native-elements';
 
 import themeStyle from '../themes/styles';
-
 const {
   headerBackgroundColor: themeBackgroundColor,
   textColor: themeColor,
