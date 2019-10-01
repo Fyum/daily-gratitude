@@ -6,6 +6,7 @@ import {
 import DayCard from './DayCard';
 
 const DayCardList = ({
+  dispatch,
   data,
 }) => {
 
@@ -15,6 +16,7 @@ const DayCardList = ({
       renderItem={
         ({ item }) =>
           <DayCard
+            dispatch={dispatch}
             key={item.key}
             dayKey={item.key}
             dateLabel={item.dateLabel}

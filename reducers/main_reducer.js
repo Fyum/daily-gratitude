@@ -2,6 +2,7 @@ export
   const ACTIONS = {
     LIST_DAY_ENTRIES_MONTH: 'LIST_DAY_ENTRIES_MONTH',
     ADD_DAY_ENTRY: 'ADD_DAY_ENTRY',
+    DELETE_DAY_ENTRY: 'DELETE_DAY_ENTRY',
   }
 
 export
@@ -13,6 +14,12 @@ export
 export
   const addDayEntry = data => ({
     type: ACTIONS.ADD_DAY_ENTRY,
+    data,
+  });
+
+export
+  const deleteDayEntry = data => ({
+    type: ACTIONS.DELETE_DAY_ENTRY,
     data,
   })
 
@@ -29,7 +36,8 @@ export
   };
 
 
-const setFormattedAddDayEntry = (state, data) => {
+const updateSingleDay = (state, data) => {
+  console.log({ state, data });
   if (!state.data.find(x => x.key === data.key)) {
     return {
       ...state,
@@ -39,7 +47,6 @@ const setFormattedAddDayEntry = (state, data) => {
       ].sort((a, b) => a.key < b.key ? -1 : 1)
     }
   };
-
   return {
     ...state,
     data: state.data.map(x =>
@@ -48,6 +55,15 @@ const setFormattedAddDayEntry = (state, data) => {
         : x
     )
   };
+};
+
+
+const setFormattedAddDayEntry = (state, data) => {
+  return updateSingleDay(state, data);
+}
+
+const setFormattedDeleteDayEntry = (state, data) => {
+  return updateSingleDay(state, data)
 }
 
 export
@@ -57,6 +73,7 @@ export
         return { ...state, data: action.data };
       case ACTIONS.ADD_DAY_ENTRY:
         return setFormattedAddDayEntry(state, action.data);
-      
+      case ACTIONS.DELETE_DAY_ENTRY: 
+        return setFormattedDeleteDayEntry(state, action.data);
     }
   }

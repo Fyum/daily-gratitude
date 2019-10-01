@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
   TouchableOpacity,
   Text,
@@ -9,13 +9,19 @@ import {
 } from 'react-native-elements';
 
 import deleteEntry from '../data-storage/delete_entry';
+import {
+  deleteDayEntry
+} from '../reducers/main_reducer';
+import getDayEntries from '../data-storage/get_day_entries';
 
 const Entry = ({
+  dispatch,
+  date,
   dayKey,
   title,
   comment,
   color,
-  entryIdx,
+  entryIdx, // TODO should be entryId instead 
 }) => {
 
   const [border, setBorder] = useState({});
@@ -41,6 +47,12 @@ const Entry = ({
       width: '100%',
     })
   }
+
+  const onPressDeleteEntry = useCallback(async () => {
+    await deleteEntry(dayKey, entryIdx);
+    const updatedDay = await getDayEntries(date);
+    dispatch(deleteDayEntry(updatedDay));
+  }, [deleteEntry, getDayEntries, dispatch, deleteDayEntry]);
 
   return (
     <View style={{ ...containerStyle, ...containerWidth }}>
@@ -71,7 +83,7 @@ const Entry = ({
               backgroundColor: '#5b6267',
               padding: 4
             }}
-            onPress={() => deleteEntry(dayKey, entryIdx)}
+            onPress={onPressDeleteEntry}
             underlayColor='transparent'
           />
         }

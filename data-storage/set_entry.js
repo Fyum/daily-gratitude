@@ -33,7 +33,7 @@ const addEntry = (entries, entry) =>
     ...entries,
     {
       ...entry,
-      color: entries[0].color
+      color: entries.length && entries[0].color
         ? entries[0].color
         : getRandomColor(),
       id: entries.length + 1,

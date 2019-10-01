@@ -9,6 +9,7 @@ import {
 import Entry from './Entry';
 
 const DayCard = ({
+  dispatch,
   dateLabel,
   dayKey,
   items,
@@ -26,7 +27,9 @@ const DayCard = ({
           items.map((x, i) => {
             return (
               <Entry key={`text-${i}`} 
-                dayKey={dayKey} 
+                dispatch={dispatch}
+                dayKey={dayKey}
+                date={x.date}
                 entryIdx={x.id} 
                 title={x.title} 
                 color={x.color} 

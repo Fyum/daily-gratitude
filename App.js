@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useReducer } from 'react';
 import {
   StyleSheet,
   Text,
@@ -13,6 +13,13 @@ import CreateEntryOverlay from './components/CreateEntryOverlay';
 import DeleteEntryOverlay from './components/DeleteEntryOverlay'; // TODO remove this, just for testing
 import NoEntriesMessage from './components/NoEntriesMessage';
 
+import {
+  initialState,
+  reducer,
+  listDayEntriesMonth,
+  addNewEntry,
+} from './reducers/main_reducer';
+
 import getEntries from './data-storage/get_month_entries';
 
 export default function App() {
@@ -21,9 +28,12 @@ export default function App() {
   const [data, setData] = useState([]);
   const [currentList, setCurrentList] = useState({ month: 9, year: 2019 }); // TODO use current month
 
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   const fetchFromStorage = async () => {
     const entries = await getEntries(currentList.month.toString().padStart(2, 0), currentList.year);
-    setData(entries);
+    dispatch(listDayEntriesMonth(entries));
+    // setData(entries);
   };
 
   const previousMonth = useCallback(() => {
@@ -73,17 +83,19 @@ export default function App() {
         onClickNextMonth={nextMonth}
       />
       {
-        data && data.length
+        state.data && state.data.length
           ? <DayCardList
-            data={data}
+            dispatch={dispatch}
+            data={state.data}
           />
           : <NoEntriesMessage />
       }
 
       <CreateEntryOverlay
+        dispatch={dispatch}
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}
-        onSave={() => { setModalVisible(false); fetchFromStorage(); }} // TODO save new entry to memory
+        onSave={() => { setModalVisible(false); /* fetchFromStorage(); */ }} // TODO save new entry to memory
       />
       {/* <DeleteEntryOverlay
         isVisible={modalVisible}

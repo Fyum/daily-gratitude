@@ -6,15 +6,20 @@ const getDateLabel = date => {
   return `${DateTime.local(Number(year), Number(month), Number(day)).weekdayShort}, ${date}`;
 }
 
-const formatData = (key, item) => ({
-  key: key,
-  date: item[0].date,
-  dateLabel: getDateLabel(item[0].date),
-  entries: item,
-});
+const getDateFromKey = key =>
+  key.replace('@day_entries_item:', '');
+
+const formatData = (key, item) => {
+  const date = getDateFromKey(key);
+  return{
+    key: key,
+    date: date,
+    dateLabel: getDateLabel(date),
+    entries: item,
+  }
+}
 
 const mapDbToUiItem = (key, dbItem) => {
-  console.log('db item', dbItem);
   return formatData(key, dbItem);
 }
 

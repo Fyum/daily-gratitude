@@ -12,9 +12,15 @@ import {
   Input,
 } from 'react-native-elements';
 
+import {
+  addDayEntry
+} from '../reducers/main_reducer';
+
 import setEntry from '../data-storage/set_entry';
+import getDayEntries from '../data-storage/get_day_entries';
 
 const CreateEntryOverlay = ({
+  dispatch,
   isVisible,
   onClose,
   onSave,
@@ -31,8 +37,11 @@ const CreateEntryOverlay = ({
       comment,
     };
     await setEntry(newEntry);
+    const updatedDayEntries = await getDayEntries(date);
+    console.log('get ENTRY result', updatedDayEntries);
+    dispatch(addDayEntry(updatedDayEntries));
     onSave();
-  }, [date, title, comment, setEntry])
+  }, [date, title, comment, setEntry, getDayEntries])
   return (
 
     <Overlay

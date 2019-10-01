@@ -6,12 +6,16 @@ const getDateLabel = date => {
   return `${DateTime.local(Number(year), Number(month), Number(day)).weekdayShort}, ${date}`;
 }
 
+const getDateFromKey = key =>
+  key.replace('@day_entries_item:', '');
+
 const formatData = (items) => {
   return items.map(item => {
+    const date = getDateFromKey(item.key);
     return {
       key: item.key,
-      date: item.value[0].date,
-      dateLabel: getDateLabel(item.value[0].date), // TODO maybe set this data on put
+      date: date,
+      dateLabel: getDateLabel(date), // TODO maybe set this data on put
       entries: item.value,
     }
   });
