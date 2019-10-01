@@ -67,7 +67,7 @@ const containerStyle = {
   marginRight: 0,
   borderWidth: 0,
   marginTop: 0,
-  backgroundColor: contentBackgroundColor,
+  backgroundColor: 'transparent',
 };
 
 const titleStyle = {
