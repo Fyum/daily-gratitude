@@ -59,6 +59,7 @@ const CreateEntryOverlay = ({
             size={30}
             onPress={onClose}
             color='#9EB6C1'
+            underlayColor='transparent'
           />
           <Text style={{ color: '#9EB6C1' }}>Create new entry</Text>
           <Icon
@@ -67,6 +68,7 @@ const CreateEntryOverlay = ({
             size={30}
             onPress={onSavePress}
             color='#9EB6C1'
+            underlayColor='transparent'
           />
         </Header>
         <View style={{ marginTop: 50 }}>
