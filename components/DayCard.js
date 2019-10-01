@@ -8,6 +8,13 @@ import {
 
 import Entry from './Entry';
 
+import themeStyle from '../themes/styles';
+const {
+  headerBackgroundColor,
+  contentBackgroundColor,
+  textColor,
+} = themeStyle;
+
 const DayCard = ({
   dispatch,
   dateLabel,
@@ -60,12 +67,12 @@ const containerStyle = {
   marginRight: 0,
   borderWidth: 0,
   marginTop: 0,
-  backgroundColor: '#4F5559',
+  backgroundColor: contentBackgroundColor,
 };
 
 const titleStyle = {
-  color: '#9EB6C1',
-  borderBottomColor: '#9EB6C1',
+  color: textColor,
+  borderBottomColor: textColor,
   paddingBottom: 5,
   marginRight: 10,
   borderBottomWidth: 1,
@@ -77,19 +84,6 @@ const titleStyle = {
 
 const dividerStyle = {
   display: 'none',
-};
-
-const textStyle = {
-  paddingTop: 10,
-  paddingBottom: 10,
-  paddingLeft: 15,
-  paddingRight: 15,
-  borderRadius: 20,
-  backgroundColor: '#84BD6B',
-  margin: 10,
-  color: 'white',
-  height: 'auto',
-  fontSize: 18,
 };
 
 

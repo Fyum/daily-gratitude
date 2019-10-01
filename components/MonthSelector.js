@@ -27,6 +27,14 @@ const monthValueMap = {
   12: 'Dec',
 }
 
+import themeStyle from '../themes/styles';
+
+const {
+  headerBackgroundColor,
+  contentBackgroundColor,
+  textColor,
+} = themeStyle;
+
 const MonthSelector = ({
   currentMonth,
   currentYear,
@@ -35,7 +43,8 @@ const MonthSelector = ({
 }) => {
   return (
     <LinearGradient
-      colors={['#313639', '#4f5559']}
+      // colors={['#313639', '#4f5559']}
+      colors={[headerBackgroundColor, contentBackgroundColor]}
       >
 
       <View style={containerStyle}>
@@ -63,8 +72,6 @@ const MonthSelector = ({
     </LinearGradient>
   )
 }
-
-const textColor = '#9eb6c1';
 
 const containerStyle = {
   flexDirection: 'row',

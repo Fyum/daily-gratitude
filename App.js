@@ -24,6 +24,13 @@ import {
 
 import getEntries from './data-storage/get_month_entries';
 
+import themeStyle from './themes/styles';
+const {
+  headerBackgroundColor,
+  contentBackgroundColor,
+  textColor,
+} = themeStyle;
+
 export default function App() {
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // marginTop: 24,
-    backgroundColor: '#4F5559',
+    backgroundColor: contentBackgroundColor,
   },
   listItem: {
     flex: 1,
