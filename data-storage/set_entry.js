@@ -1,4 +1,4 @@
-import uuid from 'react-native-uuid';
+import v4 from 'uuid/v4';
 import setItem from './utils/set_item';
 import getItem from './utils/get_item';
 
@@ -26,7 +26,7 @@ const makeKey = date =>
 const createDayEntry = entry => [{
   ...entry,
   color: getRandomColor(),
-  id: uuid.v4(),
+  id: v4(),
 }];
 
 const addEntry = (entries, entry) =>
@@ -37,7 +37,7 @@ const addEntry = (entries, entry) =>
       color: entries.length && entries[0].color
         ? entries[0].color
         : getRandomColor(),
-      id: uuid.v4(),
+      id: v4(),
     }
   ]
 
