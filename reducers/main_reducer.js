@@ -130,7 +130,7 @@ export
       case ACTIONS.ADD_DAY_ENTRY:
         return setFormattedAddDayEntry(state, action.data);
       case ACTIONS.DELETE_DAY_ENTRY:
-        return setFormattedDeleteDayEntry(state);
+        return setFormattedDeleteDayEntry(state, action.data);
       case ACTIONS.NEXT_CURRENT_LIST:
         return setFormattedNextCurrentList(state);
       case ACTIONS.PREVIOUS_CURRENT_LIST:

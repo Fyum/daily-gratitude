@@ -16,31 +16,38 @@ const DayCard = ({
 }) => {
 
   return (
-    <Card
-      title={dateLabel}
-      containerStyle={containerStyle}
-      titleStyle={titleStyle}
-      dividerStyle={dividerStyle}
-    >
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap'}}>
-        {
-          items.map((x, i) => {
-            return (
-              <Entry key={`text-${i}`} 
-                dispatch={dispatch}
-                dayKey={dayKey}
-                date={x.date}
-                entryIdx={x.id} 
-                title={x.title} 
-                color={x.color} 
-                comment={x.comment} 
-              />
-            );
-          })
-        }
+    <View>
+      {
+        items.length ?
+          <Card
+            title={dateLabel}
+            containerStyle={containerStyle}
+            titleStyle={titleStyle}
+            dividerStyle={dividerStyle}
+          >
+            <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+              {
+                items.map((x, i) => {
+                  return (
+                    <Entry key={`text-${i}`}
+                      dispatch={dispatch}
+                      dayKey={dayKey}
+                      date={x.date}
+                      entryIdx={x.id}
+                      title={x.title}
+                      color={x.color}
+                      comment={x.comment}
+                    />
+                  );
+                })
+              }
 
-      </View>
-    </Card>
+            </View>
+          </Card>
+          : null
+      }
+    </View>
+
   )
 };
 
