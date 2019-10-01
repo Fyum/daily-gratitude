@@ -18,6 +18,8 @@ import {
   reducer,
   listDayEntriesMonth,
   addNewEntry,
+  nextCurrentList,
+  previousCurrentList,
 } from './reducers/main_reducer';
 
 import getEntries from './data-storage/get_month_entries';
@@ -31,45 +33,14 @@ export default function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const fetchFromStorage = async () => {
-    const entries = await getEntries(currentList.month.toString().padStart(2, 0), currentList.year);
+    const entries = await getEntries(state.currentList.month.toString().padStart(2, 0), state.currentList.year);
     dispatch(listDayEntriesMonth(entries));
     // setData(entries);
   };
 
-  const previousMonth = useCallback(() => {
-    const newMonth = currentList.month - 1;
-    if (newMonth === 0) {
-      setCurrentList({
-        month: 12,
-        year: currentList.year - 1,
-      })
-    } else {
-      setCurrentList({
-        month: newMonth,
-        year: currentList.year,
-      });
-    };
-
-  }, [currentList, setCurrentList]);
-
-  const nextMonth = useCallback(() => {
-    const newMonth = currentList.month + 1;
-    if (newMonth === 13) {
-      setCurrentList({
-        month: 1,
-        year: currentList.year + 1,
-      })
-    } else {
-      setCurrentList({
-        month: newMonth,
-        year: currentList.year,
-      });
-    }
-  }, [currentList, setCurrentList]);
-
   useEffect(() => {
     fetchFromStorage();
-  }, [currentList]);
+  }, [state.currentList]);
 
   return (
     <View style={styles.container}>
@@ -77,10 +48,10 @@ export default function App() {
         onClickMenu={() => { }} // TODO
       />
       <MonthSelector
-        currentMonth={currentList.month}
-        currentYear={currentList.year}
-        onClickPreviousMonth={previousMonth}
-        onClickNextMonth={nextMonth}
+        currentMonth={state.currentList.month}
+        currentYear={state.currentList.year}
+        onClickPreviousMonth={() => dispatch(previousCurrentList())}
+        onClickNextMonth={() => dispatch(nextCurrentList())}
       />
       {
         state.data && state.data.length
