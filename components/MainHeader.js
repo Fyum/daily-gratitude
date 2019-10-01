@@ -1,12 +1,15 @@
 import React from 'react';
-
-import {
-  Text
-} from 'react-native';
 import {
   Icon,
   Header,
 } from 'react-native-elements';
+
+import themeStyle from '../themes/styles';
+
+const {
+  headerBackgroundColor: themeBackgroundColor,
+  textColor: themeColor,
+} = themeStyle;
 
 const MainHeader = ({
   onClickMenu,
@@ -15,16 +18,15 @@ const MainHeader = ({
     <Header
       containerStyle={{ borderBottomColor: '#313639', height: 80 }}
       placement="left"
-      backgroundColor='#313639'
+      backgroundColor={themeBackgroundColor}
     >
       <Icon
         name='menu'
         type='material'
         size={30}
         onPress={() => onClickMenu()}
-        color='#9EB6C1'
+        color={themeColor}
       />
-      <Text style={{ color: '#9EB6C1' }}>Daily gratitude</Text>
     </Header>
   )
 };
