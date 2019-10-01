@@ -44,7 +44,7 @@ export
     isModalOpen: false,
     selectedEntries: [],
     currentList: {
-      month: 9,
+      month: 10,
       year: 2019,
     }
   };

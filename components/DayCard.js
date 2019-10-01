@@ -27,13 +27,13 @@ const DayCard = ({
           >
             <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
               {
-                items.map((x, i) => {
+                items.map(x => {
                   return (
-                    <Entry key={`text-${i}`}
+                    <Entry key={x.id}
                       dispatch={dispatch}
                       dayKey={dayKey}
                       date={x.date}
-                      entryIdx={x.id}
+                      entryId={x.id}
                       title={x.title}
                       color={x.color}
                       comment={x.comment}

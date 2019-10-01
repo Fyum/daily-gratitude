@@ -30,6 +30,13 @@ const CreateEntryOverlay = ({
   const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
 
+  const resetFields = useCallback(() => {
+    setDate(DateTime.local().toFormat('dd/LL/yyyy'));
+    setTitle('');
+    setComment('');
+    console.log('reset fields', title);
+  }, [date, title, comment]);
+
   const onSavePress = useCallback(async () => {
     const newEntry = {
       date,
@@ -41,7 +48,8 @@ const CreateEntryOverlay = ({
     console.log('get ENTRY result', updatedDayEntries);
     dispatch(addDayEntry(updatedDayEntries));
     onSave();
-  }, [date, title, comment, setEntry, getDayEntries])
+    resetFields();
+  }, [date, title, comment, setEntry, getDayEntries]);
   return (
 
     <Overlay

@@ -21,7 +21,7 @@ const Entry = ({
   title,
   comment,
   color,
-  entryIdx, // TODO should be entryId instead 
+  entryId,
 }) => {
 
   const [border, setBorder] = useState({});
@@ -49,7 +49,8 @@ const Entry = ({
   }
 
   const onPressDeleteEntry = useCallback(async () => {
-    await deleteEntry(dayKey, entryIdx);
+    console.log('On press delete entry', dayKey, entryId);
+    await deleteEntry(dayKey, entryId);
     const updatedDay = await getDayEntries(date);
     dispatch(deleteDayEntry(updatedDay));
   }, [deleteEntry, getDayEntries, dispatch, deleteDayEntry]);
