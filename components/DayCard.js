@@ -1,19 +1,15 @@
 import React from 'react';
 import { Card } from 'react-native-elements';
 import {
-  StyleSheet,
   Text,
   View,
 } from 'react-native';
 
 import Entry from './Entry';
 
-import themeStyle from '../themes/styles';
-const {
-  headerBackgroundColor,
-  contentBackgroundColor,
-  textColor,
-} = themeStyle;
+import {
+  cardStyle
+} from './DayCard.style';
 
 const DayCard = ({
   dispatch,
@@ -28,9 +24,9 @@ const DayCard = ({
         items.length ?
           <Card
             title={dateLabel}
-            containerStyle={containerStyle}
-            titleStyle={titleStyle}
-            dividerStyle={dividerStyle}
+            containerStyle={cardStyle.container}
+            titleStyle={cardStyle.title}
+            dividerStyle={cardStyle.divider}
           >
             <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
               {
@@ -48,42 +44,12 @@ const DayCard = ({
                   );
                 })
               }
-
             </View>
           </Card>
           : null
       }
     </View>
-
   )
-};
-
-const containerStyle = {
-  paddingLeft: 20,
-  paddingRight: 20,
-  paddingTop: 10,
-  paddingBottom: 5,
-  marginLeft: 0,
-  marginRight: 0,
-  borderWidth: 0,
-  marginTop: 0,
-  backgroundColor: 'transparent',
-};
-
-const titleStyle = {
-  color: textColor,
-  borderBottomColor: textColor,
-  paddingBottom: 5,
-  marginRight: 10,
-  borderBottomWidth: 1,
-  textAlign: 'right',
-  fontWeight: 'normal',
-  fontStyle: 'italic',
-  fontSize: 16
-};
-
-const dividerStyle = {
-  display: 'none',
 };
 
 
