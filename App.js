@@ -24,6 +24,7 @@ import {
   addNewEntry,
   nextCurrentList,
   previousCurrentList,
+  setDisplayedOverlay,
 } from './reducers/main_reducer';
 
 import getEntries from './data-storage/get_month_entries';
@@ -82,15 +83,14 @@ export default function App() {
 
       <CreateEntryOverlay
         dispatch={dispatch}
-        isVisible={modalVisible}
-        onClose={() => setModalVisible(false)}
-        onSave={() => { setModalVisible(false); /* fetchFromStorage(); */ }} // TODO save new entry to memory
+        isVisible={state.isDisplayedOverlay.createEntry}
       />
       {/* <DeleteEntryOverlay
         isVisible={modalVisible}
         onClose={() => setModalVisible(false)}  
         /> */}
-      <AddButton onPress={() => setModalVisible(true)} />
+      <AddButton 
+        onPress={() => dispatch(setDisplayedOverlay({ createEntry: true }))} />
     </LinearGradient>
   );
 }

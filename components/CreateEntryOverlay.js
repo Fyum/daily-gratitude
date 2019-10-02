@@ -14,7 +14,8 @@ import {
 } from 'react-native-elements';
 
 import {
-  addDayEntry
+  addDayEntry,
+  setDisplayedOverlay,
 } from '../reducers/main_reducer';
 
 import setEntry from '../data-storage/set_entry';
@@ -30,8 +31,6 @@ const {
 const CreateEntryOverlay = ({
   dispatch,
   isVisible,
-  onClose,
-  onSave,
 }) => {
 
   const [date, setDate] = useState(DateTime.local().toFormat('dd/LL/yyyy'));
@@ -48,7 +47,7 @@ const CreateEntryOverlay = ({
     const updatedDayEntries = await getDayEntries(date);
     console.log('get ENTRY result', updatedDayEntries);
     dispatch(addDayEntry(updatedDayEntries));
-    onSave();
+    dispatch(setDisplayedOverlay({ createEntry: false }));
   }, [date, title, comment, setEntry, getDayEntries]);
   return (
 
@@ -69,7 +68,7 @@ const CreateEntryOverlay = ({
             name='arrow-back'
             type='material'
             size={30}
-            onPress={onClose}
+            onPress={() => dispatch(setDisplayedOverlay({ createEntry: false }))}
             color={textColor}
             underlayColor='transparent'
           />

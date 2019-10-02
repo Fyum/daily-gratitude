@@ -5,6 +5,7 @@ export
     DELETE_DAY_ENTRY: 'DELETE_DAY_ENTRY',
     NEXT_CURRENT_LIST: 'NEXT_CURRENT_LIST',
     PREVIOUS_CURRENT_LIST: 'PREVIOUS_CURRENT_LIST',
+    SET_DISPLAYED_OVERLAY: 'SET_DISPLAYED_OVERLAY',
   }
 
 export
@@ -35,13 +36,22 @@ export
   const previousCurrentList = data => ({
     type: ACTIONS.PREVIOUS_CURRENT_LIST,
     data,
+  });
+
+export
+  const setDisplayedOverlay = data => ({
+    type: ACTIONS.SET_DISPLAYED_OVERLAY,
+    data,
   })
 
 export
   const initialState = {
     data: [],
     isLoading: false,
-    isModalOpen: false,
+    isDisplayedOverlay: {
+      createEntry: false,
+      deleteEntry: false,
+    },
     selectedEntries: [],
     currentList: {
       month: 10,
@@ -135,5 +145,7 @@ export
         return setFormattedNextCurrentList(state);
       case ACTIONS.PREVIOUS_CURRENT_LIST:
         return setFormattedPreviousCurrentList(state);
+      case ACTIONS.SET_DISPLAYED_OVERLAY:
+        return { ...state, isDisplayedOverlay: { ...state.isDisplayedOverlay, ...action.data } } // TODO maybe set all overlay flag to false?
     }
   }
