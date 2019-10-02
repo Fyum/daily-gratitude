@@ -5,6 +5,10 @@ import {
   View,
 } from 'react-native';
 
+import {
+  LinearGradient
+} from 'expo-linear-gradient';
+
 import MainHeader from './components/MainHeader';
 import MonthSelector from './components/MonthSelector';
 import AddButton from './components/AddButton';
@@ -50,7 +54,12 @@ export default function App() {
   }, [state.currentList]);
 
   return (
-    <View style={styles.container}>
+    <LinearGradient
+        style={styles.container}
+        start={{ x: 0, y: 0.3 }} // Apparently 'start' is the end gradient 3% and 'end' is the start gradient with 15%
+        end={{ x: 0, y: 1.5 }}
+        colors={[contentBackgroundColor, '#AF656F']}
+      >
       <MainHeader
         onClickMenu={() => { }} // TODO
       />
@@ -60,14 +69,16 @@ export default function App() {
         onClickPreviousMonth={() => dispatch(previousCurrentList())}
         onClickNextMonth={() => dispatch(nextCurrentList())}
       />
-      {
-        state.data && state.data.length
-          ? <DayCardList
-            dispatch={dispatch}
-            data={state.data}
-          />
-          : <NoEntriesMessage />
-      }
+
+      
+        {
+          state.data && state.data.length
+            ? <DayCardList
+              dispatch={dispatch}
+              data={state.data}
+            />
+            : <NoEntriesMessage />
+        }
 
       <CreateEntryOverlay
         dispatch={dispatch}
@@ -80,7 +91,7 @@ export default function App() {
         onClose={() => setModalVisible(false)}  
         /> */}
       <AddButton onPress={() => setModalVisible(true)} />
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -88,7 +99,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // marginTop: 24,
-    backgroundColor: contentBackgroundColor,
   },
   listItem: {
     flex: 1,
