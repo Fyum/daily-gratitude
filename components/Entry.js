@@ -64,7 +64,7 @@ const Entry = ({
   return (
     <View style={{ ...containerStyle, ...containerWidth }}>
 
-      <View style={{ flexDirection: 'row', margin: 10 }}>
+      <View style={{ flexDirection: 'row', margin: 10, flexWrap: 'wrap' }}>
 
         <TouchableOpacity
           onPress={press}

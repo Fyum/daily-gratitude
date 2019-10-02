@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { DateTime } from 'luxon';
 import {
-  View
+  View,
+  KeyboardAvoidingView,
 } from 'react-native';
 
 import {
@@ -55,7 +56,11 @@ const CreateEntryOverlay = ({
       isVisible={isVisible}
       fullScreen
       overlayStyle={overlayStyle}>
-      <View>
+      
+      <KeyboardAvoidingView
+          style={{ flex: 1 }}
+          behavior='padding'
+        >
         <Header
           containerStyle={{ borderBottomColor: '#313639', height: 80 }}
           placement="left"
@@ -78,36 +83,36 @@ const CreateEntryOverlay = ({
             underlayColor='transparent'
           />
         </Header>
-        <View style={{ marginTop: 50 }}>
-          <Input
-            containerStyle={containerInputStyle}
-            inputStyle={{ color: 'white' }}
-            labelStyle={{ color: textColor }}
-            label='Date'
-            placeholder='01/02/2019'
-            defaultValue={date}
-            onChangeText={text => setDate(text)}
-          />
-          <Input
-            containerStyle={containerInputStyle}
-            inputStyle={{ color: 'white' }}
-            labelStyle={{ color: textColor }}
-            label='Title'
-            placeholder='Write a short text'
-            onChangeText={text => setTitle(text)}
-          />
-          <Input
-            containerStyle={containerInputStyle}
-            inputStyle={{ color: 'white' }}
-            labelStyle={{ color: textColor }}
-            label='Comment'
-            placeholder='Write your comment here'
-            onChangeText={text => setComment(text)}
-            multiline={true}
-            numberOfLines={4}
-          />
-        </View>
-      </View>
+          <View style={{ marginTop: 30, flex: 1 }}>
+            <Input
+              containerStyle={containerInputStyle}
+              inputStyle={{ color: 'white' }}
+              labelStyle={{ color: textColor }}
+              label='Date'
+              placeholder='01/02/2019'
+              defaultValue={date}
+              onChangeText={text => setDate(text)}
+            />
+            <Input
+              containerStyle={containerInputStyle}
+              inputStyle={{ color: 'white' }}
+              labelStyle={{ color: textColor }}
+              label='Title'
+              placeholder='Write a short text'
+              onChangeText={text => setTitle(text)}
+            />
+            <Input
+              containerStyle={containerInputStyle}
+              inputStyle={{ color: 'white' }}
+              labelStyle={{ color: textColor }}
+              label='Comment'
+              placeholder='Write your comment here'
+              onChangeText={text => setComment(text)}
+              multiline={true}
+              numberOfLines={4}
+            />
+          </View>
+        </KeyboardAvoidingView>
     </Overlay>
   )
 }
