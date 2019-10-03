@@ -58,10 +58,6 @@ const Entry = ({
   const onPressDeleteEntry = useCallback(async () => {
     dispatch(setEntryToDelete({ dayKey, entryId, date }));
     dispatch(setDisplayedOverlay({ deleteEntry: true }));
-    // console.log('On press delete entry', dayKey, entryId);
-    // await deleteEntry(dayKey, entryId);
-    // const updatedDay = await getDayEntries(date);
-    // dispatch(deleteDayEntry(updatedDay));
   }, [setDisplayedOverlay, dispatch, setEntryToDelete]);
 
   return (
