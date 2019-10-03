@@ -10,7 +10,8 @@ import {
 
 import deleteEntry from '../data-storage/delete_entry';
 import {
-  deleteDayEntry
+  setEntryToDelete,
+  setDisplayedOverlay,
 } from '../reducers/main_reducer';
 import getDayEntries from '../data-storage/get_day_entries';
 
@@ -55,11 +56,13 @@ const Entry = ({
   }
 
   const onPressDeleteEntry = useCallback(async () => {
-    console.log('On press delete entry', dayKey, entryId);
-    await deleteEntry(dayKey, entryId);
-    const updatedDay = await getDayEntries(date);
-    dispatch(deleteDayEntry(updatedDay));
-  }, [deleteEntry, getDayEntries, dispatch, deleteDayEntry]);
+    dispatch(setEntryToDelete({ dayKey, entryId, date }));
+    dispatch(setDisplayedOverlay({ deleteEntry: true }));
+    // console.log('On press delete entry', dayKey, entryId);
+    // await deleteEntry(dayKey, entryId);
+    // const updatedDay = await getDayEntries(date);
+    // dispatch(deleteDayEntry(updatedDay));
+  }, [setDisplayedOverlay, dispatch, setEntryToDelete]);
 
   return (
     <View style={{ ...containerStyle, ...containerWidth }}>

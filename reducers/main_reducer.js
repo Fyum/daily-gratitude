@@ -6,6 +6,7 @@ export
     NEXT_CURRENT_LIST: 'NEXT_CURRENT_LIST',
     PREVIOUS_CURRENT_LIST: 'PREVIOUS_CURRENT_LIST',
     SET_DISPLAYED_OVERLAY: 'SET_DISPLAYED_OVERLAY',
+    SET_ENTRY_TO_DELETE: 'SET_ENTRY_TO_DELETE',
   }
 
 export
@@ -42,6 +43,12 @@ export
   const setDisplayedOverlay = data => ({
     type: ACTIONS.SET_DISPLAYED_OVERLAY,
     data,
+  });
+
+export
+  const setEntryToDelete = data => ({
+    type: ACTIONS.SET_ENTRY_TO_DELETE,
+    data,
   })
 
 export
@@ -56,7 +63,8 @@ export
     currentList: {
       month: 10,
       year: 2019,
-    }
+    },
+    entryToDelete: {},
   };
 
 
@@ -147,5 +155,7 @@ export
         return setFormattedPreviousCurrentList(state);
       case ACTIONS.SET_DISPLAYED_OVERLAY:
         return { ...state, isDisplayedOverlay: { ...state.isDisplayedOverlay, ...action.data } } // TODO maybe set all overlay flag to false?
+      case ACTIONS.SET_ENTRY_TO_DELETE: 
+        return { ...state, entryToDelete: action.data }
     }
   }

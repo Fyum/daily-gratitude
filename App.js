@@ -85,10 +85,11 @@ export default function App() {
         dispatch={dispatch}
         isVisible={state.isDisplayedOverlay.createEntry}
       />
-      {/* <DeleteEntryOverlay
-        isVisible={modalVisible}
-        onClose={() => setModalVisible(false)}  
-        /> */}
+      <DeleteEntryOverlay
+        dispatch={dispatch}
+        isVisible={state.isDisplayedOverlay.deleteEntry}
+        targetItem={state.entryToDelete}
+        />
       <AddButton 
         onPress={() => dispatch(setDisplayedOverlay({ createEntry: true }))} />
     </LinearGradient>

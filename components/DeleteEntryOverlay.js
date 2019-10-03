@@ -10,11 +10,34 @@ import {
   Button,
 } from 'react-native-elements';
 
+import {
+  setDisplayedOverlay,
+  deleteDayEntry,
+  setEntryToDelete,
+} from '../reducers/main_reducer';
+
+
+import deleteEntry from '../data-storage/delete_entry';
+import getDayEntries from '../data-storage/get_day_entries';
+
 const DeleteEntryOverlay = ({
+  dispatch,
   isVisible,
-  onClose,
-  onSave,
+  targetItem,
 }) => {
+
+  const onClose = () => {
+    dispatch(setDisplayedOverlay({ deleteEntry: false }));
+    dispatch(setEntryToDelete({}));
+  };
+
+  const onConfirm = useCallback(async () => {
+    await deleteEntry(targetItem.dayKey, targetItem.entryId);
+    const updatedDay = await getDayEntries(targetItem.date);
+    dispatch(deleteDayEntry(updatedDay));
+    dispatch(setDisplayedOverlay({ deleteEntry: false }));
+    dispatch(setEntryToDelete({})); // TODO maybe do all this in one reduce operation??
+  })
 
   return (
     <Overlay
@@ -46,7 +69,7 @@ const DeleteEntryOverlay = ({
           />
           <Button
             title='OK'
-            onPress={onSave}
+            onPress={onConfirm}
             type='clear'
           />
         </View>
