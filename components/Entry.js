@@ -8,12 +8,10 @@ import {
   Icon,
 } from 'react-native-elements';
 
-import deleteEntry from '../data-storage/delete_entry';
 import {
   setEntryToDelete,
   setDisplayedOverlay,
 } from '../reducers/main_reducer';
-import getDayEntries from '../data-storage/get_day_entries';
 
 import themeStyle from '../themes/styles';
 const {
