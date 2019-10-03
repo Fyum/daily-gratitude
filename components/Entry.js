@@ -152,8 +152,8 @@ const touchableStyle = {
 };
 
 const commentTextStyle = {
-  paddingTop: 20,
-  paddingBottom: 20,
+  paddingTop: 10,
+  paddingBottom: 15,
   paddingLeft: 30,
   paddingRight: 30,
   borderTopLeftRadius: 0,

@@ -9,8 +9,8 @@ const {
 export
   const cardStyle = {
     container: {
-      paddingLeft: 20,
-      paddingRight: 20,
+      paddingLeft: 10,
+      paddingRight: 10,
       paddingTop: 10,
       paddingBottom: 5,
       marginLeft: 0,
