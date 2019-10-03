@@ -111,7 +111,7 @@ const Entry = ({
         }
       </View>
       {
-        !!showComment && <Text style={{ ...commentTextStyle, backgroundColor: color }}>{comment}</Text>
+        !!showComment && <Text style={{ ...commentTextStyle, backgroundColor: color }}>{comment || 'No comment'}</Text>
       }
     </View>
   )
