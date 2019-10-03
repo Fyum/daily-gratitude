@@ -20,6 +20,10 @@ import {
 import deleteEntry from '../data-storage/delete_entry';
 import getDayEntries from '../data-storage/get_day_entries';
 
+import {
+  overlayStyle,
+} from './DeleteEntryOverlay.style';
+
 const DeleteEntryOverlay = ({
   dispatch,
   isVisible,
@@ -42,24 +46,16 @@ const DeleteEntryOverlay = ({
   return (
     <Overlay
       isVisible={isVisible}
-      overlayStyle={overlayStyle}
+      overlayStyle={overlayStyle.overlay}
       height='auto'
       width='auto'
     >
       <View style={{ flexDirection: 'column', justifyContent: 'space-between', padding: 10 }}>
         <Text
-          style={{
-            marginBottom: 30,
-            color: 'white',
-            fontWeight: 'bold',
-          }}
+          style={overlayStyle.title}
         >Delete entry</Text>
         <Text
-          style={{
-            marginBottom: 30,
-            color: 'white',
-            alignSelf: 'center'
-          }}
+          style={overlayStyle.textContent}
         >Are you sure you want to delete this entry?</Text>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
           <Button
@@ -77,15 +73,5 @@ const DeleteEntryOverlay = ({
     </Overlay>
   )
 }
-
-const overlayStyle = {
-  backgroundColor: '#4f5559',
-};
-
-const containerInputStyle = {
-  marginBottom: 30,
-  paddingLeft: 50,
-  paddingRight: 50,
-};
 
 export default DeleteEntryOverlay;
