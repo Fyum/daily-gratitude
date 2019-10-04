@@ -45,7 +45,6 @@ const CreateEntryOverlay = ({
     };
     await setEntry(newEntry);
     const updatedDayEntries = await getDayEntries(date);
-    console.log('get ENTRY result', updatedDayEntries);
     dispatch(addDayEntry(updatedDayEntries));
     dispatch(setDisplayedOverlay({ createEntry: false }));
   }, [date, title, comment, setEntry, getDayEntries]);

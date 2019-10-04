@@ -29,7 +29,6 @@ const getMonthEntries = async (month, year) => {
     return [];
   }
   const res = mapItemsToUi(items);
-  // console.log('Result formatted', res);
   return res;
 }
 

@@ -8,7 +8,6 @@ const removeFromDay = (dayEntries, entryId) => {
 
 const deleteEntry = async (dayKey, entryId) => {
   const dayEntries = await getItem(dayKey);
-  console.log(dayEntries);
   const updatedDayEntries = removeFromDay(dayEntries, entryId);
   await setItem(dayKey, updatedDayEntries);
 }

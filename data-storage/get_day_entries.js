@@ -17,7 +17,6 @@ const getDayEntries = async (date) => {
     return;
   }
   const singleItem = mapDbToUiItem(key, item);
-  console.log('GET single item ', singleItem);
   return singleItem;
 }
 
