@@ -4,27 +4,27 @@ import {
   Header,
 } from 'react-native-elements';
 
-import themeStyle from '../themes/styles';
-const {
-  headerBackgroundColor: themeBackgroundColor,
-  textColor: themeColor,
-} = themeStyle;
+import {
+  headerStyle,
+  iconStyle,
+} from './MainHeader.style';
 
 const MainHeader = ({
   onClickMenu,
 }) => {
   return (
     <Header
-      containerStyle={{ borderBottomColor: '#313639', height: 80 }}
+      containerStyle={headerStyle.container}
       placement="left"
-      backgroundColor={themeBackgroundColor}
+      backgroundColor={headerStyle.backgroundColor}
     >
       <Icon
         name='menu'
         type='material'
         size={30}
         onPress={() => onClickMenu()}
-        color={themeColor}
+        color={iconStyle.color}
+        underlayColor='transparent'
       />
     </Header>
   )
