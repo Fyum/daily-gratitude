@@ -69,7 +69,6 @@ export
 
 
 const updateSingleDay = (state, data) => {
-  console.log({ state, data });
   if (!state.data.find(x => x.key === data.key)) {
     return {
       ...state,
@@ -98,50 +97,35 @@ const setFormattedDeleteDayEntry = (state, data) => {
   return updateSingleDay(state, data)
 };
 
-const setFormattedPreviousCurrentList = (state) => {
-  const newMonth = state.currentList.month - 1;
-  if (newMonth === 0) {
-    return {
-      ...state,
-      currentList: {
-        month: 12,
-        year: state.currentList.year - 1,
-      }
-    }
-  } else {
-    return {
-      ...state,
-      currentList: {
-        month: newMonth,
-        year: state.currentList.year,
-      }
+const formatCurrentList = (state, m, y) => {
+  return {
+    ...state,
+    currentList: {
+      id: `${m.toString().padStart(2, 0)}/${y}`,
+      month: m,
+      year: y,
     }
   }
+}
+
+const setFormattedPreviousCurrentList = (state) => {
+  const newMonth = state.currentList.month - 1;
+  return newMonth === 0
+    ? formatCurrentList(state, 12, state.currentList.year - 1)
+    : formatCurrentList(state, newMonth, state.currentList.year);
 }
 
 const setFormattedNextCurrentList = (state) => {
   const newMonth = state.currentList.month + 1;
-  if (newMonth === 13) {
-    return {
-      ...state,
-      currentList: {
-        month: 1,
-        year: state.currentList.year + 1,
-      }
-    }
-  } else {
-    return {
-      ...state,
-      currentList: {
-        month: newMonth,
-        year: state.currentList.year,
-      }
-    }
-  }
+  return newMonth === 13
+    ? formatCurrentList(state, 1, state.currentList.year + 1)
+    : formatCurrentList(state, newMonth, state.currentList.year);
 }
 
 export
   const reducer = (state, action) => {
+  console.log({ state, data });
+
     switch (action.type) {
       case ACTIONS.LIST_DAY_ENTRIES_MONTH:
         return { ...state, data: action.data };
@@ -155,7 +139,7 @@ export
         return setFormattedPreviousCurrentList(state);
       case ACTIONS.SET_DISPLAYED_OVERLAY:
         return { ...state, isDisplayedOverlay: { ...state.isDisplayedOverlay, ...action.data } } // TODO maybe set all overlay flag to false?
-      case ACTIONS.SET_ENTRY_TO_DELETE: 
+      case ACTIONS.SET_ENTRY_TO_DELETE:
         return { ...state, entryToDelete: action.data }
     }
   }

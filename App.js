@@ -51,6 +51,7 @@ export default function App() {
   };
 
   useEffect(() => {
+    
     fetchFromStorage();
   }, [state.currentList]);
 
