@@ -124,7 +124,7 @@ const setFormattedNextCurrentList = (state) => {
 
 export
   const reducer = (state, action) => {
-  console.log({ state, data });
+  console.log({ state, action });
 
     switch (action.type) {
       case ACTIONS.LIST_DAY_ENTRIES_MONTH:
