@@ -24,7 +24,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.fyum.dailygratitude"
+    },
+    "android": {
+      "package": "com.fyum.dailygratitude"
     }
   }
 }
