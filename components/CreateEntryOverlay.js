@@ -32,12 +32,30 @@ const CreateEntryOverlay = ({
   dispatch,
   isVisible,
 }) => {
+  const DATE_FORMAT = 'dd/LL/yyyy';
 
-  const [date, setDate] = useState(DateTime.local().toFormat('dd/LL/yyyy'));
+  const [date, setDate] = useState(DateTime.local().toFormat(DATE_FORMAT));
   const [title, setTitle] = useState('');
   const [comment, setComment] = useState('');
+  const [errorMessages, setErrorMessages] = useState({
+    date: '',
+    title: '',
+  });
+
+  const fieldsAreValid = async () => {
+    const error = {
+      date: !DateTime.fromFormat(date, DATE_FORMAT).isValid ? 'Date is invalid' : '',
+      title: !title ? 'Field is required' : ''
+    }
+    console.log(error);
+    setErrorMessages(error);
+    return !error.date && !error.title;
+  }
 
   const onSavePress = useCallback(async () => {
+    if(!fieldsAreValid()){
+      return;
+    }
     const newEntry = {
       date,
       title,
@@ -54,11 +72,11 @@ const CreateEntryOverlay = ({
       isVisible={isVisible}
       fullScreen
       overlayStyle={overlayStyle}>
-      
+
       <KeyboardAvoidingView
-          style={{ flex: 1 }}
-          behavior='padding'
-        >
+        style={{ flex: 1 }}
+        behavior='padding'
+      >
         <Header
           containerStyle={{ borderBottomColor: '#313639', height: 80 }}
           placement="left"
@@ -81,36 +99,39 @@ const CreateEntryOverlay = ({
             underlayColor='transparent'
           />
         </Header>
-          <View style={{ marginTop: 30, flex: 1 }}>
-            <Input
-              containerStyle={containerInputStyle}
-              inputStyle={{ color: 'white' }}
-              labelStyle={{ color: textColor }}
-              label='Date'
-              placeholder='01/02/2019'
-              defaultValue={date}
-              onChangeText={text => setDate(text)}
-            />
-            <Input
-              containerStyle={containerInputStyle}
-              inputStyle={{ color: 'white' }}
-              labelStyle={{ color: textColor }}
-              label='Title'
-              placeholder='Write a short text'
-              onChangeText={text => setTitle(text)}
-            />
-            <Input
-              containerStyle={containerInputStyle}
-              inputStyle={{ color: 'white' }}
-              labelStyle={{ color: textColor }}
-              label='Comment'
-              placeholder='Write your comment here'
-              onChangeText={text => setComment(text)}
-              multiline={true}
-              numberOfLines={4}
-            />
-          </View>
-        </KeyboardAvoidingView>
+        <View style={{ marginTop: 30, flex: 1 }}>
+          <Input
+            containerStyle={containerInputStyle}
+            inputStyle={{ color: 'white' }}
+            labelStyle={{ color: textColor }}
+            label='Date'
+            defaultValue={date}
+            onChangeText={text => setDate(text)}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errorMessages.date ? errorMessages.date : ''}
+          />
+          <Input
+            containerStyle={containerInputStyle}
+            inputStyle={{ color: 'white' }}
+            labelStyle={{ color: textColor }}
+            label='Title'
+            placeholder='Write a short text'
+            onChangeText={text => setTitle(text)}
+            errorStyle={{ color: 'red' }}
+            errorMessage={errorMessages.title ? errorMessages.title : ''}
+          />
+          <Input
+            containerStyle={containerInputStyle}
+            inputStyle={{ color: 'white' }}
+            labelStyle={{ color: textColor }}
+            label='Comment'
+            placeholder='Write your comment here'
+            onChangeText={text => setComment(text)}
+            multiline={true}
+            numberOfLines={4}
+          />
+        </View>
+      </KeyboardAvoidingView>
     </Overlay>
   )
 }
