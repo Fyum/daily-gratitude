@@ -31,16 +31,10 @@ import getEntries from './data-storage/get_month_entries';
 
 import themeStyle from './themes/styles';
 const {
-  headerBackgroundColor,
   contentBackgroundColor,
-  textColor,
 } = themeStyle;
 
 export default function App() {
-
-  const [modalVisible, setModalVisible] = useState(false);
-  const [data, setData] = useState([]);
-  const [currentList, setCurrentList] = useState({ month: 9, year: 2019 }); // TODO use current month
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
