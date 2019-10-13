@@ -67,9 +67,23 @@ const DrawerNavigator = createDrawerNavigator(
       activeTintColor: '#ECD1D5',
       activeBackgroundColor: '#AF656F',
       itemStyle: {
-        paddingLeft:20,
+        paddingLeft: 20,
       }
     }
   }
 );
-export default createAppContainer(DrawerNavigator);
+
+const MainApp = () => {
+  const currentView = (name) => {
+    switch (name) {
+      case 'entries': 
+        return <ViewEntries />
+      case 'settings': 
+        return <ViewSettings />
+    }
+  }
+  return currentView('entries');
+}
+
+const ENV = 'dev'
+export default (ENV === 'dev' ? MainApp : createAppContainer(DrawerNavigator))
