@@ -44,16 +44,22 @@ const CreateEntryOverlay = ({
 
   const fieldsAreValid = async () => {
     const error = {
-      date: !DateTime.fromFormat(date, DATE_FORMAT).isValid ? 'Date is invalid' : '',
-      title: !title ? 'Field is required' : ''
+      date: !DateTime.fromFormat(date, DATE_FORMAT).isValid ? 'Date is invalid' : false,
+      title: !title ? 'Field is required' : false
     }
-    console.log(error);
     setErrorMessages(error);
-    return !error.date && !error.title;
+    return error.date === false 
+      && error.title === false
+  }
+
+  const clearFields = () => {
+    setTitle('');
+    setComment('');
   }
 
   const onSavePress = useCallback(async () => {
-    if(!fieldsAreValid()){
+    if(!await fieldsAreValid()){
+      console.log('Invalid fields');
       return;
     }
     const newEntry = {
@@ -65,6 +71,7 @@ const CreateEntryOverlay = ({
     const updatedDayEntries = await getDayEntries(date);
     dispatch(addDayEntry(updatedDayEntries));
     dispatch(setDisplayedOverlay({ createEntry: false }));
+    clearFields();
   }, [date, title, comment, setEntry, getDayEntries]);
   return (
 
