@@ -73,6 +73,11 @@ const CreateEntryOverlay = ({
     dispatch(setDisplayedOverlay({ createEntry: false }));
     clearFields();
   }, [date, title, comment, setEntry, getDayEntries]);
+
+  const onBackPress = useCallback(async () => {
+    dispatch(setDisplayedOverlay({ createEntry: false }));
+    clearFields();
+  }, []);
   return (
 
     <Overlay
@@ -92,7 +97,7 @@ const CreateEntryOverlay = ({
             name='arrow-back'
             type='material'
             size={30}
-            onPress={() => dispatch(setDisplayedOverlay({ createEntry: false }))}
+            onPress={onBackPress}
             color={textColor}
             underlayColor='transparent'
           />
