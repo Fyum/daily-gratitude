@@ -53,9 +53,6 @@ const ViewEntries = () => {
         end={{ x: 0, y: 1.5 }}
         colors={[contentBackgroundColor, '#AF656F']}
       >
-      <MainHeader
-        onClickMenu={() => { }} // TODO
-      />
       <MonthSelector
         currentMonth={state.currentList.month}
         currentYear={state.currentList.year}

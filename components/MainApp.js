@@ -1,7 +1,5 @@
 
-import React, { Component } from 'react';
-
-import { View } from 'react-native'
+import React from 'react';
 
 import {createAppContainer} from 'react-navigation';
 import {createDrawerNavigator} from 'react-navigation-drawer';
@@ -11,50 +9,25 @@ import ViewSettings from './ViewSettings';
 import MainHeader from './MainHeader'
 
 
-
-class NavigationDrawerStructure extends Component {
-  //Structure for the navigatin Drawer
-  toggleDrawer = () => {
-    //Props to open/close the drawer
-    this.props.navigationProps.toggleDrawer();
-  };
-  render() {
-    return (
-      <View style={{ flexDirection: 'row' }}>
-        <MainHeader
-           onClickMenu={this.toggleDrawer.bind(this)}
-        />
-      </View>
-    );
-  }
-}
+const NavigationDrawerHeader = ({ navigationProps }) => 
+  <MainHeader onClickMenu={navigationProps.toggleDrawer} />
 
 const StackNavigatorViewEntries = createStackNavigator({
-  //All the screen from the Screen1 will be indexed here
   First: {
     screen: ViewEntries,
     navigationOptions: ({ navigation }) => ({
-      title: 'Demo Screen 1',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#FFF',
-      },
-      headerTintColor: '#fff',
+      title: 'View entries screen',
+      header: <NavigationDrawerHeader navigationProps={navigation} />,
     }),
   },
 });
 
 const StackNavigatorViewSettings = createStackNavigator({
-  //All the screen from the Screen1 will be indexed here
   Second: {
     screen: ViewSettings,
     navigationOptions: ({ navigation }) => ({
-      title: 'Demo Screen 2',
-      headerLeft: <NavigationDrawerStructure navigationProps={navigation} />,
-      headerStyle: {
-        backgroundColor: '#FFF',
-      },
-      headerTintColor: '#fff',
+      title: 'View settings screen',
+      header: <NavigationDrawerHeader navigationProps={navigation} />,
     }),
   },
 });
@@ -62,13 +35,13 @@ const StackNavigatorViewSettings = createStackNavigator({
 
 const DrawerNavigator = createDrawerNavigator({
   //Drawer Optons and indexing
-  ViewEntries: { //Title
+  ViewEntries: {
     screen: StackNavigatorViewEntries,
     navigationOptions: {
-      drawerLabel: "Home"
+      drawerLabel: "Entries"
     }
   },
-  ViewSettings: { //Title
+  ViewSettings: { 
     screen: StackNavigatorViewSettings,
     navigationOptions: {
       drawerLabel: "Settings"
@@ -76,13 +49,3 @@ const DrawerNavigator = createDrawerNavigator({
   },
 });
 export default createAppContainer(DrawerNavigator);
-
-
-// const MainApp = () =>{ 
-
-//   return (
-//     <ViewEntries />
-//   )
-// }
-
-// export default MainApp;

@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 
 const ViewSettings = () => {
 
 
-  return (
-    <View>Settings</View>
-  )
+  return <View>
+    <Text>Settings</Text>
+  </View>
 }
 
 export default ViewSettings;
