@@ -16,12 +16,12 @@ import {
 import {
   addDayEntry,
   setDisplayedOverlay,
-} from '../reducers/main_reducer';
+} from '../../reducers/main_reducer';
 
-import setEntry from '../data-storage/set_entry';
-import getDayEntries from '../data-storage/get_day_entries';
+import setEntry from '../../data-storage/set_entry';
+import getDayEntries from '../../data-storage/get_day_entries';
 
-import themeStyle from '../themes/styles';
+import themeStyle from '../../themes/styles';
 const {
   headerBackgroundColor,
   contentBackgroundColor,

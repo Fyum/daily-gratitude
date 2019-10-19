@@ -11,9 +11,9 @@ import {
 import {
   setEntryToDelete,
   setDisplayedOverlay,
-} from '../reducers/main_reducer';
+} from '../../reducers/main_reducer';
 
-import themeStyle from '../themes/styles';
+import themeStyle from '../../themes/styles';
 const {
   textColor,
   iconBackgroundColor,

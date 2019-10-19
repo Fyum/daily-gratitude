@@ -27,7 +27,7 @@ const monthValueMap = {
   12: 'Dec',
 }
 
-import themeStyle from '../themes/styles';
+import themeStyle from '../../themes/styles';
 
 const {
   headerBackgroundColor,

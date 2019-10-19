@@ -8,12 +8,12 @@ import {
 } from 'expo-linear-gradient';
 
 import MainHeader from './MainHeader';
-import MonthSelector from './MonthSelector';
-import AddButton from './AddButton';
-import DayCardList from './DayCardList';
-import CreateEntryOverlay from './CreateEntryOverlay';
-import DeleteEntryOverlay from './DeleteEntryOverlay'; // TODO remove this, just for testing
-import NoEntriesMessage from './NoEntriesMessage';
+import MonthSelector from './entries/MonthSelector';
+import AddButton from './entries/AddButton';
+import DayCardList from './entries/DayCardList';
+import CreateEntryOverlay from './entries/CreateEntryOverlay';
+import DeleteEntryOverlay from './entries/DeleteEntryOverlay'; // TODO remove this, just for testing
+import NoEntriesMessage from './entries/NoEntriesMessage';
 
 import {
   initialState,

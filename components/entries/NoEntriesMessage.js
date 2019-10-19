@@ -4,7 +4,7 @@ import {
   Text,
 } from 'react-native';
 
-import themeStyle from '../themes/styles';
+import themeStyle from '../../themes/styles';
 const {
   textColor,
 } = themeStyle;
