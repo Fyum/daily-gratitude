@@ -82,7 +82,7 @@ const MainApp = () => {
         return <ViewSettings />
     }
   }
-  return currentView('settings');
+  return currentView('entries'); // Change here for the page you want to work on
 }
 
 const ENV = 'dev'

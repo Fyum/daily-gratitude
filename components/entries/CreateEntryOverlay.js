@@ -20,13 +20,7 @@ import {
 
 import setEntry from '../../data-storage/set_entry';
 import getDayEntries from '../../data-storage/get_day_entries';
-
-import themeStyle from '../../themes/styles';
-const {
-  headerBackgroundColor,
-  contentBackgroundColor,
-  textColor,
-} = themeStyle;
+import { _input, _icon, _text, _header, _overlay } from './CreateEntryOverlay.style';
 
 const CreateEntryOverlay = ({
   dispatch,
@@ -48,7 +42,7 @@ const CreateEntryOverlay = ({
       title: !title ? 'Field is required' : false
     }
     setErrorMessages(error);
-    return error.date === false 
+    return error.date === false
       && error.title === false
   }
 
@@ -58,7 +52,7 @@ const CreateEntryOverlay = ({
   }
 
   const onSavePress = useCallback(async () => {
-    if(!await fieldsAreValid()){
+    if (!await fieldsAreValid()) {
       console.log('Invalid fields');
       return;
     }
@@ -78,64 +72,64 @@ const CreateEntryOverlay = ({
     dispatch(setDisplayedOverlay({ createEntry: false }));
     clearFields();
   }, []);
+
   return (
 
     <Overlay
       isVisible={isVisible}
       fullScreen
-      overlayStyle={overlayStyle}>
-
+      overlayStyle={_overlay.overlay}>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior='padding'
       >
         <Header
-          containerStyle={{ borderBottomColor: '#313639', height: 80 }}
+          containerStyle={_header.container}
           placement="left"
-          backgroundColor={headerBackgroundColor}>
+          backgroundColor={_header.backgroundColor}>
           <Icon
             name='arrow-back'
             type='material'
             size={30}
             onPress={onBackPress}
-            color={textColor}
+            color={_icon.color}
             underlayColor='transparent'
           />
-          <Text style={{ color: textColor }}>Create new entry</Text>
+          <Text style={_text}>Create new entry</Text>
           <Icon
             name='check'
             type='material'
             size={30}
             onPress={onSavePress}
-            color={textColor}
+            color={_icon.color}
             underlayColor='transparent'
           />
         </Header>
         <View style={{ marginTop: 30, flex: 1 }}>
           <Input
-            containerStyle={containerInputStyle}
-            inputStyle={{ color: 'white' }}
-            labelStyle={{ color: textColor }}
+            containerStyle={_input.container}
+            inputStyle={_input.input}
+            labelStyle={_input.label}
             label='Date'
             defaultValue={date}
             onChangeText={text => setDate(text)}
-            errorStyle={{ color: 'red' }}
+            errorStyle={_input.error}
             errorMessage={errorMessages.date ? errorMessages.date : ''}
           />
           <Input
-            containerStyle={containerInputStyle}
-            inputStyle={{ color: 'white' }}
-            labelStyle={{ color: textColor }}
+            containerStyle={_input.container}
+            inputStyle={_input.input}
+            labelStyle={_input.label}
             label='Title'
             placeholder='Write a short text'
             onChangeText={text => setTitle(text)}
-            errorStyle={{ color: 'red' }}
+            errorStyle={_input.error}
             errorMessage={errorMessages.title ? errorMessages.title : ''}
           />
           <Input
-            containerStyle={containerInputStyle}
-            inputStyle={{ color: 'white' }}
-            labelStyle={{ color: textColor }}
+            containerStyle={_input.container}
+            inputStyle={_input.input}
+            labelStyle={_input.label}
             label='Comment'
             placeholder='Write your comment here'
             onChangeText={text => setComment(text)}
@@ -147,16 +141,4 @@ const CreateEntryOverlay = ({
     </Overlay>
   )
 }
-
-const overlayStyle = {
-  backgroundColor: contentBackgroundColor,
-  padding: 0,
-};
-
-const containerInputStyle = {
-  marginBottom: 30,
-  paddingLeft: 50,
-  paddingRight: 50,
-};
-
 export default CreateEntryOverlay;

@@ -4,7 +4,7 @@ import {
 } from 'react-native-elements';
 
 import {
-  iconStyle
+  _icon
 } from './AddButton.style';
 
 const AddButton = ({
@@ -15,8 +15,8 @@ const AddButton = ({
       name='add'
       type='material'
       size={40}
-      containerStyle={iconStyle.container}
-      iconStyle={iconStyle.icon}
+      containerStyle={_icon.container}
+      iconStyle={_icon.iconStyle}
       onPress={onPress}
       underlayColor='transparent'
     />

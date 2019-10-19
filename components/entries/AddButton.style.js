@@ -1,11 +1,11 @@
 export
-  const iconStyle = {
+  const _icon = {
     container: {
       position: 'absolute',
       bottom: 40,
       right: 40,
     },
-    icon: {
+    iconStyle: {
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
@@ -19,5 +19,5 @@ export
       color: 'white',
       padding: 15,
       borderRadius: 100,
-    }
-  };
+    },
+  }
