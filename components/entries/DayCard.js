@@ -16,6 +16,7 @@ const DayCard = ({
   dateLabel,
   dayKey,
   items,
+  isLast,
 }) => {
 
   return (
@@ -45,6 +46,10 @@ const DayCard = ({
                 })
               }
             </View>
+            {
+              isLast &&
+              <View style={{ paddingBottom: 200 }}></View>
+            }
           </Card>
           : null
       }

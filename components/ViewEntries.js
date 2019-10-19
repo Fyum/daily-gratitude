@@ -88,14 +88,6 @@ const ViewEntries = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // marginTop: 24,
-  },
-  listItem: {
-    flex: 1,
-    borderBottomWidth: 1,
-    height: 50,
-    width: '100%',
-    borderBottomColor: 'gray',
   }
 });
 
