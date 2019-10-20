@@ -15,7 +15,9 @@ const applyQuery = (items, query) =>
     ...item,
     value: 
       item.value.filter(
-        ({comment, title}) => comment.includes(query) || title.includes(query))
+        ({comment, title}) => 
+          comment.toLowerCase().includes(query) || 
+          title.toLowerCase().includes(query))
   }))
   .filter(item => item.value.length) // Only keeps the ones that have entries
 
@@ -37,10 +39,8 @@ const queryEntries = async (month, year, query) => {
     console.log('no item');
     return [];
   }
-  console.log('items before map', items)
-  const filteredResult = applyQuery(items, query)
+  const filteredResult = applyQuery(items, query.toLowerCase())
   const res = mapItemsToUi(filteredResult);
-  console.log('search result = ', query, res)
   return res;
 }
 
