@@ -43,6 +43,16 @@ const StackNavigatorViewSettings = createStackNavigator({
   },
 });
 
+const StackNavigatorViewSearch = createStackNavigator({
+  Third: {
+    screen: ViewSearch,
+    navigationOptions: ({ navigation }) => ({
+      title: 'View search screen',
+      header: <NavigationDrawerHeader navigationProps={navigation} />,
+    }),
+  },
+});
+
 
 const DrawerNavigator = createDrawerNavigator(
   {
@@ -57,6 +67,12 @@ const DrawerNavigator = createDrawerNavigator(
       screen: StackNavigatorViewSettings,
       navigationOptions: {
         drawerLabel: "Settings"
+      }
+    },
+    ViewSearch: {
+      screen: StackNavigatorViewSearch,
+      navigationOptions: {
+        drawerLabel: "Search"
       }
     },
   },
@@ -85,7 +101,7 @@ const MainApp = () => {
         return <ViewSearch />
     }
   }
-  return currentView('search'); // Change here for the page you want to work on
+  return currentView('entries'); // Change here for the page you want to work on
 }
 
 const ENV = 'dev'

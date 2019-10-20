@@ -5,7 +5,7 @@ import {
 } from 'react-native'
 
 import DayCardList from '../entries/DayCardList'
-import NoEntriesMessage from '../entries/NoEntriesMessage'
+import EmptyDataMessage from '../common/EmptyDataMessage'
 
 const Results = ({
   items,
@@ -20,7 +20,9 @@ const Results = ({
               dispatch={dispatch}
               data={items}
             />
-            : <NoEntriesMessage />
+            : <EmptyDataMessage 
+                text='No entry found'
+            />
         }
     </View>
   )

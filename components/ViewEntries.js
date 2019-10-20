@@ -13,7 +13,7 @@ import AddButton from './entries/AddButton';
 import DayCardList from './entries/DayCardList';
 import CreateEntryOverlay from './entries/CreateEntryOverlay';
 import DeleteEntryOverlay from './entries/DeleteEntryOverlay'; // TODO remove this, just for testing
-import NoEntriesMessage from './entries/NoEntriesMessage';
+import EmptyDataMessage from './common/EmptyDataMessage';
 
 import {
   initialState,
@@ -66,7 +66,9 @@ const ViewEntries = () => {
               dispatch={dispatch}
               data={state.data}
             />
-            : <NoEntriesMessage />
+            : <EmptyDataMessage 
+              text={`You don't have any entry yet!`}
+            />
         }
 
       <CreateEntryOverlay
