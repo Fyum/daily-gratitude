@@ -29,6 +29,7 @@ import getEntries from '../data-storage/get_month_entries';
 import themeStyle from '../themes/styles';
 const {
   contentBackgroundColor,
+  contentBackgroundColor2,
 } = themeStyle;
 
 const ViewEntries = () => {
@@ -50,7 +51,7 @@ const ViewEntries = () => {
         style={styles.container}
         start={{ x: 0, y: 0.3 }} // Apparently 'start' is the end gradient 3% and 'end' is the start gradient with 15%
         end={{ x: 0, y: 1.5 }}
-        colors={[contentBackgroundColor, '#AF656F']}
+        colors={[contentBackgroundColor, contentBackgroundColor2]}
       >
       <MonthSelector
         currentMonth={state.currentList.month}

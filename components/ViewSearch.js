@@ -19,6 +19,7 @@ import {
 
 const {
   contentBackgroundColor,
+  contentBackgroundColor2,
   textColor,
 } = themeStyle;
 import SearchBar from './search/SearchBar'
@@ -32,7 +33,7 @@ const ViewSearch = () => {
       style={{ flex: 1 }}
       start={{ x: 0, y: 0.3 }} // Apparently 'start' is the end gradient 3% and 'end' is the start gradient with 15%
       end={{ x: 0, y: 1.5 }}
-      colors={[contentBackgroundColor, contentBackgroundColor]}
+      colors={[contentBackgroundColor, contentBackgroundColor2]}
     >
       <SearchBar 
         dispatch={dispatch}

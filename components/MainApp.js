@@ -13,6 +13,7 @@ import themeStyle from '../themes/styles';
 const {
   headerBackgroundColor,
   contentBackgroundColor,
+  contentBackgroundColor2,
   textColor,
 } = themeStyle;
 
@@ -82,7 +83,7 @@ const DrawerNavigator = createDrawerNavigator(
     contentOptions: {
       inactiveTintColor: textColor,
       activeTintColor: '#ECD1D5',
-      activeBackgroundColor: '#AF656F',
+      activeBackgroundColor: contentBackgroundColor2,
       itemStyle: {
         paddingLeft: 20,
       }
@@ -101,8 +102,8 @@ const MainApp = () => {
         return <ViewSearch />
     }
   }
-  return currentView('entries'); // Change here for the page you want to work on
+  return currentView('search'); // Change here for the page you want to work on
 }
 
-const ENV = 'dev'
+const ENV = ''
 export default (ENV === 'dev' ? MainApp : createAppContainer(DrawerNavigator))
