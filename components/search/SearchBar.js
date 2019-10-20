@@ -3,7 +3,33 @@ import {
   View,
   Text
 } from 'react-native'
-import { SearchBar as DefaultSearchBar } from 'react-native-elements'
+import { 
+  SearchBar as DefaultSearchBar, 
+  Icon 
+} from 'react-native-elements'
+
+import { _icon, _searchBar } from './SearchBar.style'
+
+const SearchIcon = () => {
+  return (
+    <Icon
+      name='search'
+      type='material'
+      color={_icon.color}
+    />
+  )
+}
+
+
+const ClearIcon = () => {
+  return (
+    <Icon
+      name='cancel'
+      type='material'
+      color={_icon.color}
+    />
+  )
+}
 
 const SearchBar = () => {
 
@@ -11,11 +37,17 @@ const SearchBar = () => {
 
   return (
     <View>
-      <Text>Search bar</Text>
       <DefaultSearchBar
         placeholder='Search'
+        placeholderTextColor={_searchBar.placeholderTextColor}
         onChangeText={setValue}
         value={value}
+        clearIcon={<ClearIcon />}
+        inputContainerStyle={_searchBar.inputContainer}
+        inputStyle={_searchBar.input}
+        containerStyle={_searchBar.container}
+        searchIcon={<SearchIcon />}
+        round
       ></DefaultSearchBar>
     </View>
   )
