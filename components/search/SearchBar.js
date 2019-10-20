@@ -8,7 +8,7 @@ import { SearchBar as DefaultSearchBar } from 'react-native-elements'
 const SearchBar = () => {
 
   const [value, setValue] = useState('')
-  
+
   return (
     <View>
       <Text>Search bar</Text>

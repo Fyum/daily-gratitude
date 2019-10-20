@@ -16,7 +16,7 @@ import {
 import {
   addDayEntry,
   setDisplayedOverlay,
-} from '../../reducers/main_reducer';
+} from '../../reducers/entries_reducer';
 
 import setEntry from '../../data-storage/set_entry';
 import getDayEntries from '../../data-storage/get_day_entries';

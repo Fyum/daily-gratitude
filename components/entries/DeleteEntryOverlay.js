@@ -14,7 +14,7 @@ import {
   setDisplayedOverlay,
   deleteDayEntry,
   setEntryToDelete,
-} from '../../reducers/main_reducer';
+} from '../../reducers/entries_reducer';
 
 import deleteEntry from '../../data-storage/delete_entry';
 import getDayEntries from '../../data-storage/get_day_entries';

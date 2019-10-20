@@ -11,7 +11,7 @@ import {
 import {
   setEntryToDelete,
   setDisplayedOverlay,
-} from '../../reducers/main_reducer';
+} from '../../reducers/entries_reducer';
 
 import themeStyle from '../../themes/styles';
 const {

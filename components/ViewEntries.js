@@ -22,7 +22,7 @@ import {
   nextCurrentList,
   previousCurrentList,
   setDisplayedOverlay,
-} from '../reducers/main_reducer';
+} from '../reducers/entries_reducer';
 
 import getEntries from '../data-storage/get_month_entries';
 
