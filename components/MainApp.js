@@ -6,6 +6,7 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import { createStackNavigator } from 'react-navigation-stack';
 import ViewEntries from './ViewEntries';
 import ViewSettings from './ViewSettings';
+import ViewSearch from './ViewSearch'
 import MainHeader from './MainHeader'
 
 import themeStyle from '../themes/styles';
@@ -80,9 +81,11 @@ const MainApp = () => {
         return <ViewEntries />
       case 'settings': 
         return <ViewSettings />
+      case 'search':
+        return <ViewSearch />
     }
   }
-  return currentView('entries'); // Change here for the page you want to work on
+  return currentView('search'); // Change here for the page you want to work on
 }
 
 const ENV = 'dev'
