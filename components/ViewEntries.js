@@ -38,7 +38,6 @@ const ViewEntries = () => {
   const fetchFromStorage = async () => {
     const entries = await getEntries(state.currentList.month.toString().padStart(2, 0), state.currentList.year);
     dispatch(listDayEntriesMonth(entries));
-    // setData(entries);
   };
 
   useEffect(() => {
