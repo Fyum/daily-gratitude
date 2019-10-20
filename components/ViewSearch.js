@@ -10,13 +10,19 @@ import {
 } from '../reducers/search_reducer';
 
 import {
+  ActivityIndicator
+} from 'react-native'
+
+import {
   Text
 } from 'react-native-elements'
 
 const {
   contentBackgroundColor,
+  textColor,
 } = themeStyle;
 import SearchBar from './search/SearchBar'
+import Results from './search/Results'
 
 const ViewSearch = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -31,11 +37,12 @@ const ViewSearch = () => {
       <SearchBar 
         dispatch={dispatch}
       />
-      {
-        state.result.length ?
-          state.result.map(item => (<Text>{item.date}</Text>))
-          : <Text>Nothing</Text>
-      }
+
+      <Results
+        items={state.result}
+        dispatch={dispatch}
+      />
+      <ActivityIndicator size="large" color={textColor} />
     </LinearGradient>
   )
 }

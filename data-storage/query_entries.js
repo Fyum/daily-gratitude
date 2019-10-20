@@ -10,6 +10,15 @@ const makeKeys = (month, year) => {
     .map((x, i) => `@day_entries_item:${(i + 1).toString().padStart(2, '0')}/${month.padStart(2, '0')}/${year}`);
 }
 
+const applyQuery = (items, query) =>
+  items.map(item => ({
+    ...item,
+    value: 
+      item.value.filter(
+        ({comment, title}) => comment.includes(query) || title.includes(query))
+  }))
+  .filter(item => item.value.length) // Only keeps the ones that have entries
+
 /**
  *  TODO should search everything
  * @param {*} month 
@@ -19,7 +28,7 @@ const makeKeys = (month, year) => {
 const queryEntries = async (month, year, query) => {
   if (!month || !year) {
     // TODO make a better check
-    return dummyData;
+    return [];
   }
   const keys = makeKeys(month, year);
 
@@ -28,7 +37,9 @@ const queryEntries = async (month, year, query) => {
     console.log('no item');
     return [];
   }
-  const res = mapItemsToUi(items);
+  console.log('items before map', items)
+  const filteredResult = applyQuery(items, query)
+  const res = mapItemsToUi(filteredResult);
   console.log('search result = ', query, res)
   return res;
 }
