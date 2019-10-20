@@ -13,10 +13,11 @@ export
     },
     inputContainer: {
       backgroundColor: headerBackgroundColor,
-      borderWidth: 1,
+      borderBottomWidth: 2,
+      borderWidth: 2,
       borderColor: textColor,
-      borderBottomWidth: 1,
       padding: 10,
+      borderRadius: 50
     },
     input: {
       color: 'white',
