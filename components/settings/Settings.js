@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import {
-  FlatList
+  FlatList,
 } from 'react-native';
 import {
+  Button,
   ListItem,
+  Text,
 } from 'react-native-elements'
 
 import ToggleSwitch from './ToggleSwitch'
@@ -14,6 +16,9 @@ const {
   textColor,
 } = themeStyle;
 
+import exportData from '../../data-storage/utils/export_data'
+import importData from '../../data-storage/utils/import_data'
+
 const Settings = () => {
   const [darkTheme, setDarkTheme] = useState(false)
   const [notification, setNotification] = useState(false)
@@ -22,14 +27,22 @@ const Settings = () => {
     {
       title: 'Dark theme',
       subtitle: 'Use the dark theme',
-      state: darkTheme,
-      onPress: setDarkTheme,
+      element: <ToggleSwitch checked={darkTheme} onPress={setDarkTheme}/>
     },
     {
       title: 'Turn on notification',
       subtitle: 'Be notified everyday',
-      state: notification,
-      onPress: setNotification,
+      element: <ToggleSwitch checked={notification} onPress={setNotification}/>
+    },
+    {
+      title: 'Export data',
+      subtitle: '',
+      element: <Button onPress={exportData} title='Export'></Button>
+    },
+    {
+      title: 'Import data',
+      subtitle: '',
+      element: <Button onPress={importData} title='Import'></Button>
     }
   ]
 
@@ -38,7 +51,7 @@ const Settings = () => {
       title={item.title}
       subtitle={item.subtitle}
       bottomDivider
-      rightElement={<ToggleSwitch checked={item.state} onPress={item.onPress}/>}
+      rightElement={item.element}
       titleStyle={{ color: textColor }}
       subtitleStyle={{ color: textColor }}
       containerStyle={{ backgroundColor: contentBackgroundColor }}

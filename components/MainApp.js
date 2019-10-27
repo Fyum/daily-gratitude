@@ -102,7 +102,7 @@ const MainApp = () => {
         return <ViewSearch />
     }
   }
-  return currentView('search'); // Change here for the page you want to work on
+  return currentView('entries'); // Change here for the page you want to work on
 }
 
 const ENV = ''
